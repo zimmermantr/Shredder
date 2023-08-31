@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'nutrition_app',
     'workout_app',
     'exercise_app',
-    # 'workout_program_app',
+    'workout_program_app',
+    'user_app',
 ]
 
 MIDDLEWARE = [
