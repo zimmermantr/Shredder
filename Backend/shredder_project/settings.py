@@ -39,20 +39,21 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "rest_framework",
-    "rest_framework.authtoken",
-    "corsheaders",
-    "nutrition_app",
-    "workout_app",
-    "exercise_app",
-    "workout_program_app",
-    "user_app",
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
+    'nutrition_app',
+    'workout_app',
+    'exercise_app',
+    'workout_program_app',
+    'user_app',
+    'survey_app',
 ]
 
 MIDDLEWARE = [
