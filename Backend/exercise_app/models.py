@@ -7,7 +7,7 @@ class Exercise(models.Model):
     exercise_name = models.CharField(max_length=30)
     force = models.CharField(max_length=10)
     sets = models.BigIntegerField(default=3, validators=[v.MaxValueValidator(5), v.MinValueValidator(1)]) #maybe char? 3-5?
-    reps = models.BigIntegerField(default=10, validators=[v.MaxValueValidator(1000), v.MinValueValidator(1)]) #maybe char? 8-12?
+    reps = models.BigIntegerField(default=10, validators=[v.MaxValueValidator(100), v.MinValueValidator(1)]) #maybe char? 8-12?
     difficulty = models.CharField(max_length=12)
     equipment = models.CharField(max_length=20)
     instructions = models.TextField(max_length=500)
