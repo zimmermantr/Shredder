@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+    'workout_app',
+    'exercise_app'
 ]
 
 MIDDLEWARE = [
