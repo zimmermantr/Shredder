@@ -12,7 +12,7 @@ class Nutrient(models.Model):
 class Food(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     meal = models.CharField(null=False,max_length=255)
-    user_id = models.ForeignKey(App_user,related_name='foods')
+    user_id = models.ForeignKey(App_user,related_name='foods', on_delete=models.CASCADE)
 
 class Ingredient(models.Model):
     name = models.CharField(null=False,blank=False, max_length=255)
