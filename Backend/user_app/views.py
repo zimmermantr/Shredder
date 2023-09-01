@@ -32,7 +32,7 @@ class Log_in(APIView):
         user = authenticate(**request.data)
         if user:
             token, created = Token.objects.get_or_create(user=user)
-            return Response({"user": {"email": user.email}, "token": user.token})
+            return Response({"user": {"email": user.email}, "token": token.key})
         else:
             return Response("Something went wrong", status=HTTP_400_BAD_REQUEST)
 
