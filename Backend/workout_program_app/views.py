@@ -6,7 +6,7 @@ from rest_framework.status import (
     HTTP_204_NO_CONTENT,
     HTTP_400_BAD_REQUEST,
 )
-from .serializers import Workout_Program, WorkoutProgramSerializer
+from .serializers import Workout_Program, WorkoutProgramSerializer, UserWorkoutProgramSerializer, User_Workout_Program
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 # Create your views here.
@@ -17,7 +17,7 @@ class User_permissions(APIView):
 
 class All_programs(User_permissions):
     def get(self, request):
-        programs = WorkoutProgramSerializer(request.user.user_programs.order_by("program_name"), many=True)
+        programs = UserWorkoutProgramSerializer(request.user.user_programs.order_by("program_name"), many=True)
         return Response(programs.data)
     
     #  Could be used to allow users to create their own workout program, starting as an empty list, and then adding workouts to that list
@@ -30,7 +30,7 @@ class All_programs(User_permissions):
     
 class A_program(User_permissions):
     def get(self, request, id):
-        a_program = WorkoutProgramSerializer(get_object_or_404(request.user.user_programs, id=id))
+        a_program = UserWorkoutProgramSerializer(get_object_or_404(request.user.user_programs, id=id))
         return Response(a_program.data)
 
     #  Could be used to allow users to modify the name and details of their workout programs
@@ -46,6 +46,10 @@ class A_program(User_permissions):
     #         return Response("Something went wrong", status=HTTP_400_BAD_REQUEST)
 
     def delete(self, request, id):
+        # user = request.user
+        # program = user.workout_programs.get(id=id)
+        # user.workout_programs.remove(program.id)
+
         a_program = get_object_or_404(request.user.user_programs, id=id)
         a_program.workouts.exercises.all().delete()
         a_program.workouts.all().delete()

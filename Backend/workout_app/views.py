@@ -6,7 +6,7 @@ from rest_framework.status import (
     HTTP_204_NO_CONTENT,
     HTTP_400_BAD_REQUEST,
 )
-from .serializers import WorkoutSerializer, Workout
+from .serializers import WorkoutSerializer, Workout, User_Workout, UserWorkoutSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 # Create your views here.
@@ -17,19 +17,19 @@ class User_permissions(APIView):
 
 class All_workouts(User_permissions):
     def get(self, request):
-        workouts = WorkoutSerializer(request.user.user_workouts.order_by("workout_name"), many=True)
+        workouts = UserWorkoutSerializer(request.user.user_workouts.order_by("workout_name"), many=True)
         return Response(workouts.data)
     
     def post(self, request):
         request.data["app_user"] = request.user
-        new_workout = Workout(**request.data)
+        new_workout = User_Workout(**request.data)
         new_workout.save()
-        a_workout = WorkoutSerializer(new_workout)
+        a_workout = UserWorkoutSerializer(new_workout)
         return Response(a_workout.data, status=HTTP_201_CREATED)
     
 class A_workout(User_permissions):
     def get(self, request, id):
-        a_workout = WorkoutSerializer(get_object_or_404(request.user.user_workouts, id=id))
+        a_workout = UserWorkoutSerializer(get_object_or_404(request.user.user_workouts, id=id))
         return Response(a_workout.data)
 
     def put(self, request, id):
