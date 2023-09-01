@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import { Outlet, Link } from 'react-router-dom'
 import './App.css'
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <h1>Shredder</h1>
+      <Outlet />
     </>
   )
 }

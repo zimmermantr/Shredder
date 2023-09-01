@@ -1,0 +1,92 @@
+.fitness-submenu {
+    width: 7rem;
+    position: absolute;
+    top: 8.9vh;
+    left: 57.4vw;
+    list-style: none;
+    text-align: start;
+    
+}
+
+.fitness-submenu li {
+    background: rgb(0, 212, 212);
+    cursor: pointer;
+
+}
+.fitness-submenu li a:hover {
+
+    background: rgb(0, 175, 175);
+ 
+}
+
+.fitness-submenu.clicked {
+    display: none;
+    
+}
+
+.submenu-item {
+    display: block;
+    /* width: 100%;
+    height: 100%; */
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    padding: 16px;
+  
+    
+}
+
+
+/* Nutrition */
+.nutrition-submenu {
+    width: 7rem;
+    position: absolute;
+    top: 8.9vh;
+    left: 65.6%;
+    list-style: none;
+    text-align: start;
+    
+}
+
+.nutrition-submenu li {
+    background: rgb(0, 212, 212);
+    cursor: pointer;
+
+}
+.nutrition-submenu li a:hover {
+
+    background: rgb(0, 175, 175);
+ 
+}
+
+.nutrition-submenu.clicked {
+    display: none;
+    
+}
+
+/* My Plan */
+.user-submenu {
+    width: 7rem;
+    position: absolute;
+    top: 8.9vh;
+    left: 74%;
+    list-style: none;
+    text-align: start;
+    
+}
+
+.user-submenu li {
+    background: rgb(0, 212, 212);
+    cursor: pointer;
+
+}
+.user-submenu li a:hover {
+
+    background: rgb(0, 175, 175);
+ 
+}
+
+.user-submenu.clicked {
+    display: none;
+    
+}
