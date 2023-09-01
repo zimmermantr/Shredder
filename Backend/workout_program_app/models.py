@@ -9,5 +9,5 @@ class Workout_Program(models.Model):
     program_duration = models.CharField(max_length=20)
     frequency_per_week = models.PositiveBigIntegerField()
     
-    user = models.ForeignKey(App_user, on_delete=models.CASCADE)
+    user = models.ForeignKey(App_user, on_delete=models.CASCADE, related_name="user_programs")
     # workouts = models.ManyToManyField(Workout, related_name='parent_program')

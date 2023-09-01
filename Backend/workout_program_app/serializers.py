@@ -2,7 +2,7 @@ from rest_framework.serializers import ModelSerializer
 from .models import Workout_Program
 from workout_app.serializers import WorkoutSerializer
 
-class WorkoutSerializer(ModelSerializer):
+class WorkoutProgramSerializer(ModelSerializer):
     workouts = WorkoutSerializer(many=True)
     class Meta:
         model = Workout_Program
