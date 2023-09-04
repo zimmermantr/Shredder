@@ -4,15 +4,15 @@ from django.core import validators as v
 from django.core.exceptions import ValidationError
 
 
-class Survery_response(models.Model):
+class Survey_response(models.Model):
     user_id = models.ForeignKey(
         App_user, on_delete=models.CASCADE, related_name="survey_response"
     )
     height = models.BigIntegerField(
         null=False,
     )
-    weigth = models.BigIntegerField(
-        null=False, validators=[v.MinValueValidator(50), v.MaxValueValidator(450)]
+    weight = models.BigIntegerField(
+        null=False, validators=[v.MinValueValidator(50), v.MaxValueValidator(500)]
     )
     age = models.BigIntegerField(
         null=False, validators=[v.MinValueValidator(6), v.MaxValueValidator(99)]

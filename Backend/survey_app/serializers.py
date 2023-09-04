@@ -1,12 +1,11 @@
 from rest_framework import serializers
-from .models import Survery_response
+from .models import Survey_response
 
 
-class SurverySerializer(serializers.ModelSerializer):
+class SurveySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Survery_response
+        model = Survey_response
         fields = [
-            "id",
             "user_id",
             "height",
             "weight",

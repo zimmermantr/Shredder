@@ -16,8 +16,9 @@ from django.contrib.auth import authenticate
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
-from .models import Survery_response
-from .serializers import SurverySerializer
+from .models import Survey_response
+from .serializers import SurveySerializer
+from user_app.models import App_user
 
 
 class User_Survey(APIView):
@@ -26,11 +27,29 @@ class User_Survey(APIView):
 
     # Creates an instance of Survey_response class when user inputs their information
     def post(self, request):
-        request.data["app_user"] = request.user
-        new_survey = Survery_response(**request.data)
-        new_survey.save()
-        serialized_survey = SurverySerializer(new_survey)
-        return Response(serialized_survey.data, status=HTTP_201_CREATED)
+        request.data["user"] = request.user.id
+        a_survey = SurveySerializer(data=request.data)
+        if a_survey.is_valid():
+            a_survey.save()
+            return Response(a_survey.data, status=HTTP_201_CREATED)
+        return Response(a_survey.errors, status=HTTP_400_BAD_REQUEST)
+        # try:
+        # print(request.user.id)
+        # user_id = request.data.get("user_id")
+        # app_user = App_user.objects.get(pk=user_id)
+        # new_survey = Survey_response(user_id=app_user, **request.data)
+        # new_survey.save()
+        # serialized_survey = SurveySerializer(new_survey)
+
+        # return Response(serialized_survey.data, status=HTTP_201_CREATED)
+        # except App_user.DoesNotExist:
+        #     return Response(
+        #         {"error": "App_user with that id does not exist"},
+        #         status=HTTP_400_BAD_REQUEST,
+        #     )
+
+        # except Exception as e:
+        #     return Response({"error": str(e)}, status=HTTP_400_BAD_REQUEST)
 
 
 class A_Survey(APIView):
@@ -41,7 +60,7 @@ class A_Survey(APIView):
     def put(self, request, id):
         try:
             a_survey = get_object_or_404(request.user.survey_response, id=id)
-            serializer = SurverySerializer(a_survey, data=request.data)
+            serializer = SurveySerializer(a_survey, data=request.data)
             if serialize.is_valid():
                 a_survey.save()
                 return Response(status=HTTP_204_NO_CONTENT)
