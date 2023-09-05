@@ -9,7 +9,7 @@
 }
 
 .fitness-submenu li {
-    background: rgb(0, 212, 212);
+    background: rgba(199, 118, 246, 0.719);   /* rgb(0,212,212) */
     cursor: pointer;
 
 }
@@ -49,7 +49,7 @@
 }
 
 .nutrition-submenu li {
-    background: rgb(0, 212, 212);
+    background: rgba(199, 118, 246, 0.719);   /* rgb(0,212,212) */
     cursor: pointer;
 
 }
@@ -76,13 +76,13 @@
 }
 
 .user-submenu li {
-    background: rgb(0, 212, 212);
+    background: rgba(199, 118, 246, 0.719);   /* rgb(0,212,212) */
     cursor: pointer;
 
 }
 .user-submenu li a:hover {
 
-    background: rgb(0, 175, 175);
+    background: rgba(80, 80, 80, 0.614);   /* rgb(0,175,175) */
  
 }
 
