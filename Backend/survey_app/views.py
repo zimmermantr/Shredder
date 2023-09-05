@@ -48,15 +48,15 @@ class A_Survey(APIView):
         return Response(user_survey.data)
 
     # Allows users to update their survey response information and save it
-    def put(self, request):
-        try:
-            a_survey = get_object_or_404(request.user.survey_response)
-            serializer = SurveySerializer(a_survey, data=request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(status=HTTP_204_NO_CONTENT)
-            else:
-                return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
-        except Exception as e:
-            print(e)
-            return Response("Something went wrong", status=HTTP_400_BAD_REQUEST)
+    # def put(self, request):
+    #     try:
+    #         a_survey = get_object_or_404(request.user.survey_response)
+    #         serializer = SurveySerializer(a_survey, data=request.data)
+    #         if serializer.is_valid():
+    #             serializer.save()
+    #             return Response(status=HTTP_204_NO_CONTENT)
+    #         else:
+    #             return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+    #     except Exception as e:
+    #         print(e)
+    #         return Response("Something went wrong", status=HTTP_400_BAD_REQUEST)
