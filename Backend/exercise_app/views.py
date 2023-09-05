@@ -19,15 +19,15 @@ class User_permissions(APIView):
 
 class All_exercises(User_permissions):
 
-    def get(self, request, id):
+    def get(self, request, workout_id):
         return Response(
             UserExerciseSerializer(
-                get_object_or_404(request.user.user_workouts, id=id).exercises.order_by("id"), many=True,
+                get_object_or_404(request.user.user_workouts, id=workout_id).exercises.order_by("id"), many=True,
             ).data
         )
 
-    def post(self, request, id):
-        a_workout = get_object_or_404(request.user.user_workouts, id=id)
+    def post(self, request, workout_id):
+        a_workout = get_object_or_404(request.user.user_workouts, id=workout_id)
         new_exercise = User_Exercise(**request.data)
         new_exercise.save()
         new_exercise.parent_workout.add(a_workout)
@@ -36,12 +36,12 @@ class All_exercises(User_permissions):
 
 class An_exercise(User_permissions):
     
-    def get(self, request, id, exercise_id):
+    def get(self, request, program_id, workout_id, exercise_id):
         workout = get_object_or_404(request.user.user_workouts, id=id)
         exercise = workout.exercises.get(id=exercise_id)
         return Response(UserExerciseSerializer(exercise).data)
 
-    def put(self, request, id, exercise_id):
+    def put(self, request, program_id, workout_id, exercise_id):
         try:
             workout = get_object_or_404(request.user.user_workouts, id=id)
             exercise = workout.exercises.get(id=exercise_id)
@@ -53,7 +53,7 @@ class An_exercise(User_permissions):
             print(e)
             return Response("something went wrong", status=HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, id, exercise_id):
+    def delete(self, request, program_id, workout_id, exercise_id):
         workout = get_object_or_404(request.user.user_workouts, id=id)
         exercise = workout.exercises.get(id=exercise_id)
         exercise.delete()

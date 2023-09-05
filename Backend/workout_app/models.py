@@ -6,7 +6,7 @@ from workout_program_app.models import Workout_Program, User_Workout_Program
 
 
 class Workout(models.Model):
-    workout_name = models.CharField(unique=True)
+    workout_name = models.CharField()
     workout_details = models.TextField()
     # exercises, linked to Exercise
     parent_program = models.ManyToManyField(
@@ -17,8 +17,8 @@ class Workout(models.Model):
         return f"{self.workout_name}"
 
 class User_Workout(models.Model):
-    workout_name = models.CharField(unique=True)
-    app_user = models.ForeignKey(App_user, on_delete=models.CASCADE, related_name="user_workouts")
-    workout_details = models.TextField()
+    workout_name = models.CharField()
+    user = models.ManyToManyField(App_user, related_name="user_workouts", blank=True)
+    workout_details = models.TextField(blank=True)
     #exercises, linked to Exercise
     parent_program = models.ManyToManyField(User_Workout_Program, related_name="workouts", blank=True)
