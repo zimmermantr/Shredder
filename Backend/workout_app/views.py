@@ -16,23 +16,28 @@ class User_permissions(APIView):
     permission_classes = [IsAuthenticated]
 
 class All_workouts(User_permissions):
-    def get(self, request):
+    def get(self, request, program_id):
         workouts = UserWorkoutSerializer(request.user.user_workouts.order_by("workout_name"), many=True)
         return Response(workouts.data)
     
-    def post(self, request):
-        request.data["app_user"] = request.user
+    def post(self, request, program_id):
+        user = request.user
+        if id:
+            a_program = get_object_or_404(request.user.user_programs, id=program_id)
         new_workout = User_Workout(**request.data)
         new_workout.save()
+        
         a_workout = UserWorkoutSerializer(new_workout)
+        # a_workout.user.add([user])
+        # a_workout.parent_program.add()
         return Response(a_workout.data, status=HTTP_201_CREATED)
     
 class A_workout(User_permissions):
-    def get(self, request, id):
+    def get(self, request, workout_id, program_id):
         a_workout = UserWorkoutSerializer(get_object_or_404(request.user.user_workouts, id=id))
         return Response(a_workout.data)
 
-    def put(self, request, id):
+    def put(self, request, program_id, workout_id):
         try:
             a_workout = get_object_or_404(request.user.user_workouts, id=id)
             a_workout.workout_name = request.data.get("workout_name")
@@ -43,7 +48,7 @@ class A_workout(User_permissions):
             print(e)
             return Response("Something went wrong", status=HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, id):
+    def delete(self, request,  workout_id):
         a_workout = get_object_or_404(request.user.user_workouts, id=id)
         a_workout.exercises.all().delete()
         a_workout.delete()

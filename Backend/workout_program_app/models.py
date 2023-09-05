@@ -5,7 +5,7 @@ from user_app.models import App_user
 
 
 class Workout_Program(models.Model):
-    program_name = models.CharField(max_length=30)
+    program_name = models.CharField(max_length=50)
     program_details = models.TextField()
     program_difficulty = models.CharField(max_length=20)
     program_duration = models.CharField(max_length=20)
@@ -13,11 +13,11 @@ class Workout_Program(models.Model):
     # workouts = models.ManyToManyField(Workout, related_name='parent_program')
 
 class User_Workout_Program(models.Model):
-    program_name = models.CharField(max_length=30)
+    program_name = models.CharField(max_length=50)
     program_details = models.TextField()
     program_difficulty = models.CharField(max_length=20)
     program_duration = models.CharField(max_length=20)
     frequency_per_week = models.PositiveBigIntegerField()
     
-    user = models.ManyToManyField(App_user, related_name="user_programs")
+    user = models.ManyToManyField(App_user, related_name="user_programs", blank=True)
     # workouts = models.ManyToManyField(Workout, related_name='parent_program')
