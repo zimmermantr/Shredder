@@ -12,13 +12,8 @@ class Workout(models.Model):
     parent_program = models.ManyToManyField(
         Workout_Program, related_name="workouts", blank=True
     )
-
-    def __str__(self):
-        return f"{self.workout_name}"
+    created_by = models.ForeignKey(App_user, on_delete=models.CASCADE)
 
 class User_Workout(models.Model):
-    workout_name = models.CharField()
-    user = models.ManyToManyField(App_user, related_name="user_workouts", blank=True)
-    workout_details = models.TextField(blank=True)
-    #exercises, linked to Exercise
-    parent_program = models.ManyToManyField(User_Workout_Program, related_name="workouts", blank=True)
+    workout_id = models.ForeignKey(Workout, on_delete=models.CASCADE)
+    user = models.ForeignKey(App_user, related_name="user_workouts", on_delete=models.CASCADE)
