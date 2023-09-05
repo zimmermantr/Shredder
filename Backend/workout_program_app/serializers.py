@@ -10,7 +10,7 @@ class WorkoutProgramSerializer(ModelSerializer):
         fields = ['id', 'program_name', 'program_details', 'program_difficulty', 'program_duration', 'frequency_per_week', 'workouts']
 
 class UserWorkoutProgramSerializer(ModelSerializer):
-    program_id = WorkoutProgramSerializer(many=True)
+    program_id = WorkoutProgramSerializer()
 
     class Meta:
         model = User_Workout_Program

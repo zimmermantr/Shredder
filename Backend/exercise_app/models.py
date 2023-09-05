@@ -17,7 +17,7 @@ class Exercise(models.Model):
     parent_workout = models.ManyToManyField(Workout, related_name="exercises", blank=True)
     start_img = models.CharField(blank=True)
     end_img = models.CharField(blank=True)
-    created_by = models.ForeignKey(App_user, on_delete=models.CASCADE)
+    created_by = models.ForeignKey(App_user, on_delete=models.CASCADE, null=True)
 
 
 class User_Exercise(models.Model):
