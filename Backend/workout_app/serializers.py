@@ -6,11 +6,11 @@ class WorkoutSerializer(ModelSerializer):
     exercises = ExerciseSerializer(many=True)
     class Meta:
         model = Workout
-        fields = ['id', 'workout_name', 'workout_details', 'exercises', 'parent_program', 'created_by']
+        fields = ['id', 'workout_name', 'workout_details', 'exercises', 'created_by']
 
 class UserWorkoutSerializer(ModelSerializer):
-    workout_id = WorkoutSerializer(many=True)
+    workout_id = WorkoutSerializer()
 
     class Meta:
         model = User_Workout
-        fields = ['id', 'workout_id', 'user']
+        fields = ['user_id','workout_id',]

@@ -16,8 +16,9 @@ class User_permissions(APIView):
     permission_classes = [IsAuthenticated]
 
 class All_workouts(User_permissions):
-    def get(self, request, program_id):
-        workouts = UserWorkoutSerializer(request.user.user_workouts.order_by("workout_name"), many=True)
+    def get(self, request):
+        # workouts = UserWorkoutSerializer(request.user.user_workouts.order_by("workout_name"), many=True)
+        workouts = UserWorkoutSerializer()
         return Response(workouts.data)
     
     def post(self, request, program_id):
