@@ -20,4 +20,4 @@ class Survey_response(models.Model):
     gender = models.CharField(null=False, validators=[v.MaxLengthValidator(6)])
     activity_level = models.CharField(null=False)
     dietary_restrictions = models.CharField(null=True)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
