@@ -1,5 +1,4 @@
 from django.db import models
-from workout_app.models import Workout, User_Workout
 from django.core import validators as v
 from user_app.models import App_user
 
@@ -14,12 +13,11 @@ class Exercise(models.Model):
     instructions = models.TextField(max_length=5000)
     primary_muscle = models.CharField()
     secondary_muscle = models.TextField(blank=True)
-    parent_workout = models.ManyToManyField(Workout, related_name="exercises", blank=True)
     start_img = models.CharField(blank=True)
     end_img = models.CharField(blank=True)
     created_by = models.ForeignKey(App_user, on_delete=models.CASCADE)
 
 
 class User_Exercise(models.Model):
+    user_id = models.ForeignKey(App_user, related_name="userExercises", on_delete=models.CASCADE)
     exercise_id = models.ForeignKey(Exercise, on_delete=models.CASCADE)
-    user = models.ForeignKey(App_user, related_name="user_exercises", on_delete=models.CASCADE)

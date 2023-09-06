@@ -6,7 +6,7 @@ from rest_framework.status import (
     HTTP_204_NO_CONTENT,
     HTTP_400_BAD_REQUEST,
 )
-from .serializers import Workout_Program, WorkoutProgramSerializer, UserWorkoutProgramSerializer, User_Workout_Program, UserWorkoutSerializer
+from .serializers import WorkoutProgramSerializer, UserWorkoutProgramSerializer, User_Workout_Program, Workout_Program
 from exercise_app.serializers import UserExerciseSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
