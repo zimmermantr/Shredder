@@ -12,8 +12,13 @@ class Workout(models.Model):
     parent_program = models.ManyToManyField(
         Workout_Program, related_name="workouts", blank=True
     )
-    created_by = models.ForeignKey(App_user, on_delete=models.CASCADE)
+    created_by = models.ForeignKey(
+        App_user, on_delete=models.CASCADE, blank=True, null=True
+    )
+
 
 class User_Workout(models.Model):
     workout_id = models.ForeignKey(Workout, on_delete=models.CASCADE)
-    user = models.ForeignKey(App_user, related_name="user_workouts", on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        App_user, related_name="user_workouts", on_delete=models.CASCADE
+    )
