@@ -24,67 +24,26 @@ class User_permissions(APIView):
 
 class All_programs(User_permissions):
     def get(self, request):
-        programs = UserWorkoutProgramSerializer(
-            request.user.user_programs.order_by("program_name"), many=True
-        )
+        programs = UserWorkoutProgramSerializer(request.user.userWorkoutPrograms.order_by("program_id"), many=True)
         return Response(programs.data)
 
-    #  Could be used to allow users to create their own workout program, starting as an empty list, and then adding workouts to that list
-
-    # def post(self, request):
-    #     a_user = get_object_or_404(App_user, pk=request.user.pk)
-    #     new_program = User_Workout_Program(**request.data)
-    #     new_program.save()
-    #     new_program.user.add(a_user)
-    #     a_program = UserWorkoutProgramSerializer(new_program)
-    #     return Response(a_program.data, status=HTTP_201_CREATED)
-
     def post(self, request):
-        user = request.user
-        program_serializer = UserWorkoutProgramSerializer(data=request.data)
-        if program_serializer.is_valid():
-            program = program_serializer.save()
+        user = get_object_or_404(App_user, pk=request.user.pk)
+        program_id = request.data.get("program_id")
+        existing_program = user.userWorkoutPrograms.filter(program_id=program_id).first()
+        if not existing_program:
+            program = get_object_or_404(Workout_Program, pk=program_id)
+            new_user_program = User_Workout_Program(program_id=program, user=user)
+            new_user_program.save()
+            serializer = UserWorkoutProgramSerializer(new_user_program)
+            return Response(serializer.data, status=HTTP_201_CREATED)
+        else:
+            return Response("You already have this program added.", status=HTTP_204_NO_CONTENT)
 
-            # Create User_Workout instances
-            if "workouts" in request.data:
-                workouts_data = request.data["workouts"]
-                workouts = []
-                for workout_data in workouts_data:
-                    workout_data["parent_program"] = program.pk
-                    workout_serializer = UserWorkoutSerializer(data=workout_data)
-                    if workout_serializer.is_valid():
-                        workout = workout_serializer.save()
-                        workouts.append(workout)
-
-                # Set the workouts relationship for the program
-                program.workouts.set(workouts)
-
-                # Create User_Exercise instances
-                for workout in workouts:
-                    if "exercises" in request.data:
-                        exercises_data = request.data["exercises"]
-                        exercises = []
-                        for exercise_data in exercises_data:
-                            exercise_data["parent_workout"] = workout.pk
-                            exercise_serializer = UserExerciseSerializer(
-                                data=exercise_data
-                            )
-                            if exercise_serializer.is_valid():
-                                exercise = exercise_serializer.save()
-                                exercises.append(exercise)
-
-                        # Set the exercises relationship for the workout
-                        workout.exercises.set(exercises)
-
-                return Response(program_serializer.data, status=HTTP_201_CREATED)
-        return Response(program_serializer.errors, status=HTTP_400_BAD_REQUEST)
-
-
+    
 class A_program(User_permissions):
     def get(self, request, id):
-        a_program = UserWorkoutProgramSerializer(
-            get_object_or_404(request.user.user_programs, id=id)
-        )
+        a_program = UserWorkoutProgramSerializer(get_object_or_404(request.user.userWorkoutPrograms, id=id))
         return Response(a_program.data)
 
     #  Could be used to allow users to modify the name and details of their workout programs
@@ -104,8 +63,6 @@ class A_program(User_permissions):
         # program = user.workout_programs.get(id=id)
         # user.workout_programs.remove(program.id)
 
-        a_program = get_object_or_404(request.user.user_programs, id=id)
-        a_program.workouts.exercises.all().delete()
-        a_program.workouts.all().delete()
+        a_program = get_object_or_404(request.user.userWorkoutPrograms, id=id)
         a_program.delete()
         return Response(status=HTTP_204_NO_CONTENT)
