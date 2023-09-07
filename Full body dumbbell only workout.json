@@ -13,7 +13,6 @@
     "model": "workout_app.Workout",
     "pk": 1,
     "fields": {
-        
         "workout_name": "Day 1",
         "workout_details": "",
         "created_by": 1
@@ -99,6 +98,7 @@
     "model": "exercise_app.Exercise",
     "pk": 5,
     "fields": {
+
         
         "exercise_name": "Dumbbell Lateral Raise",
         "force": "pull",
@@ -135,7 +135,6 @@
     "model": "exercise_app.Exercise",
     "pk": 7,
     "fields": {
-        
         "exercise_name": "Lying Dumbbell extension",
         "force": "push",
         "sets": 2,
@@ -258,6 +257,7 @@
     "model": "exercise_app.Exercise",
     "pk": 13,
     "fields": {
+
         
         "exercise_name": "Standing Hammer Curl",
         "force": "pull",
