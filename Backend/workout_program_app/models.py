@@ -10,7 +10,7 @@ class Workout_Program(models.Model):
     program_details = models.TextField()
     program_difficulty = models.CharField(max_length=20)
     program_duration = models.CharField(max_length=20)
-    frequency_per_week = models.PositiveBigIntegerField()
+    frequency_per_week = models.CharField(max_length=12)
     workouts = models.ManyToManyField(Workout, related_name="workout_programs")
 
 class User_Workout_Program(models.Model):
