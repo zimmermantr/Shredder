@@ -18,42 +18,50 @@ class User_permissions(APIView):
 
 class All_exercises(User_permissions):
 
-    def get(self, request, workout_id):
+    # def get(self, request, workout_id):
+    #     return Response(
+    #         UserExerciseSerializer(
+    #             get_object_or_404(request.user.user_workouts, id=workout_id).exercises.order_by("id"), many=True,
+    #         ).data
+    #     )
+    
+    def get(self, request):
+        exercises = Exercise.objects.filter(created_by__in=[1,request.user.id])
         return Response(
-            UserExerciseSerializer(
-                get_object_or_404(request.user.user_workouts, id=workout_id).exercises.order_by("id"), many=True,
+            ExerciseSerializer(
+                exercises, many=True,
             ).data
         )
 
-    def post(self, request, workout_id):
-        a_workout = get_object_or_404(request.user.user_workouts, id=workout_id)
-        new_exercise = User_Exercise(**request.data)
+    def post(self, request):
+        new_exercise = Exercise(**request.data)
+        new_exercise.created_by = request.user
         new_exercise.save()
-        new_exercise.parent_workout.add(a_workout)
-        return Response(UserExerciseSerializer(new_exercise).data, status=HTTP_201_CREATED)
+        return Response(ExerciseSerializer(new_exercise).data, status=HTTP_201_CREATED)
 
 
 class An_exercise(User_permissions):
     
-    def get(self, request, program_id, workout_id, exercise_id):
-        workout = get_object_or_404(request.user.user_workouts, id=id)
-        exercise = workout.exercises.get(id=exercise_id)
-        return Response(UserExerciseSerializer(exercise).data)
+    def get(self, request, exercise_id):
+        exercise = get_object_or_404(Exercise, id=exercise_id)
+        if exercise.created_by.id not in [1,request.user.id]:
+            return Response("not autorized", status=HTTP_400_BAD_REQUEST)
+        return Response(ExerciseSerializer(exercise).data)
 
-    def put(self, request, program_id, workout_id, exercise_id):
+    def put(self, request, exercise_id):
         try:
-            workout = get_object_or_404(request.user.user_workouts, id=id)
-            exercise = workout.exercises.get(id=exercise_id)
-            exercise.sets = request.data.get("sets", exercise.sets)
-            exercise.reps = request.data.get("reps", exercise.reps)
-            exercise.save()
+            exercise = Exercise.objects.get(id=exercise_id) #get_object_or_404(Exercise, id=exercise_id)
+            if str(exercise.created_by.id) != str(request.user.id):
+                return Response("doesn't belong to user", status=HTTP_400_BAD_REQUEST)
+            Exercise.objects.filter(id=exercise_id).update(**request.data)
             return Response(status=HTTP_204_NO_CONTENT)
         except Exception as e:
             print(e)
             return Response("something went wrong", status=HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, program_id, workout_id, exercise_id):
-        workout = get_object_or_404(request.user.user_workouts, id=id)
-        exercise = workout.exercises.get(id=exercise_id)
+    def delete(self, request, exercise_id):
+        exercise = Exercise.objects.get(id=exercise_id) #get_object_or_404(Exercise, id=exercise_id)
+        if str(exercise.created_by.id) != str(request.user.id):
+            return Response("doesn't belong to user", status=HTTP_400_BAD_REQUEST)
         exercise.delete()
         return Response(status=HTTP_204_NO_CONTENT)

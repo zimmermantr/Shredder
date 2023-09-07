@@ -24,45 +24,56 @@ class User_permissions(APIView):
 
 class All_programs(User_permissions):
     def get(self, request):
-        programs = UserWorkoutProgramSerializer(request.user.userWorkoutPrograms.order_by("program_id"), many=True)
-        return Response(programs.data)
 
+        workout_programs = Workout_Program.objects.filter(created_by__in=[1,request.user.id])
+        return Response(
+            WorkoutProgramSerializer(
+                workout_programs, many=True,
+            ).data
+        )
+
+    #  Could be used to allow users to create their own workout program, starting as an empty list, and then adding workouts to that list
     def post(self, request):
-        user = get_object_or_404(App_user, pk=request.user.pk)
-        program_id = request.data.get("program_id")
-        existing_program = user.userWorkoutPrograms.filter(program_id=program_id).first()
-        if not existing_program:
-            program = get_object_or_404(Workout_Program, pk=program_id)
-            new_user_program = User_Workout_Program(program_id=program, user=user)
-            new_user_program.save()
-            serializer = UserWorkoutProgramSerializer(new_user_program)
-            return Response(serializer.data, status=HTTP_201_CREATED)
-        else:
-            return Response("You already have this program added.", status=HTTP_204_NO_CONTENT)
+        new_workout_program = Workout_Program(**request.data)
+        new_workout_program.created_by = request.user
+        new_workout_program.save()
+        return Response(WorkoutProgramSerializer(new_workout_program).data, status=HTTP_201_CREATED)
 
-    
+#       This allows the user to add a program from the db and make a copy of it for their account without changin the db
+#     def post(self, request):
+#         user = get_object_or_404(App_user, pk=request.user.pk)
+#         program_id = request.data.get("program_id")
+#         existing_program = user.userWorkoutPrograms.filter(program_id=program_id).first()
+#         if not existing_program:
+#             program = get_object_or_404(Workout_Program, pk=program_id)
+#             new_user_program = User_Workout_Program(program_id=program, user=user)
+#             new_user_program.save()
+#             serializer = UserWorkoutProgramSerializer(new_user_program)
+#             return Response(serializer.data, status=HTTP_201_CREATED)
+#         else:
+#             return Response("You already have this program added.", status=HTTP_204_NO_CONTENT)
+
 class A_program(User_permissions):
     def get(self, request, id):
-        a_program = UserWorkoutProgramSerializer(get_object_or_404(request.user.userWorkoutPrograms, id=id))
-        return Response(a_program.data)
+        workout_program = get_object_or_404(Workout_Program, id=id)
+        if workout_program.created_by.id not in [1,request.user.id]:
+            return Response("not autorized", status=HTTP_400_BAD_REQUEST)
+        return Response(WorkoutProgramSerializer(workout_program).data)
 
-    #  Could be used to allow users to modify the name and details of their workout programs
-    # def put(self, request, id):
-    #     try:
-    #         a_program = get_object_or_404(request.user.user_programs, id=id)
-    #         a_program.program_name = request.data.get("program_name")
-    #         a_program.program_details = request.data.get("program_details")
-    #         a_program.save()
-    #         return Response(status=HTTP_204_NO_CONTENT)
-    #     except Exception as e:
-    #         print(e)
-    #         return Response("Something went wrong", status=HTTP_400_BAD_REQUEST)
-
+    def put(self, request, id):
+        try:
+            workout_program = Workout_Program.objects.get(id=id) 
+            if str(workout_program.created_by.id) != str(request.user.id):
+                return Response("doesn't belong to user", status=HTTP_400_BAD_REQUEST)
+            Workout_Program.objects.filter(id=id).update(**request.data)
+            return Response(status=HTTP_204_NO_CONTENT)
+        except Exception as e:
+            print(e)
+            return Response("something went wrong", status=HTTP_400_BAD_REQUEST)
+    
     def delete(self, request, id):
-        # user = request.user
-        # program = user.workout_programs.get(id=id)
-        # user.workout_programs.remove(program.id)
-
-        a_program = get_object_or_404(request.user.userWorkoutPrograms, id=id)
-        a_program.delete()
+        workout_program = Workout_Program.objects.get(id=id)
+        if str(workout_program.created_by.id) != str(request.user.id):
+            return Response("doesn't belong to user", status=HTTP_400_BAD_REQUEST)
+        workout_program.delete()
         return Response(status=HTTP_204_NO_CONTENT)

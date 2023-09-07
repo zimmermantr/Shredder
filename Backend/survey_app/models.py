@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 
 class Survey_response(models.Model):
     user_id = models.ForeignKey(
-        App_user, on_delete=models.CASCADE, related_name="survey_response"
+        App_user, on_delete=models.CASCADE, related_name="survey_responses"
     )
     height = models.BigIntegerField(
         null=False,
