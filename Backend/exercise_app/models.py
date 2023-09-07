@@ -12,9 +12,9 @@ class Exercise(models.Model):
     equipment = models.CharField(max_length=20)
     instructions = models.TextField(max_length=5000)
     primary_muscle = models.CharField()
-    secondary_muscle = models.TextField(blank=True)
-    start_img = models.CharField(blank=True)
-    end_img = models.CharField(blank=True)
+    secondary_muscle = models.TextField(null=True)
+    start_img = models.CharField(null=True)
+    end_img = models.CharField(null=True)
     created_by = models.ForeignKey(App_user, on_delete=models.CASCADE)
 
 

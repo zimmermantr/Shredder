@@ -5,7 +5,7 @@ export const Button = () => {
     return (
         //signup  |
         <Link to='/'> 
-            <button className="btn">Sign Up</button>
+            <button className="btn2">Sign Up</button>
         </Link>
     )
 }
