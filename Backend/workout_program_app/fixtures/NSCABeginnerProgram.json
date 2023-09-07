@@ -14,7 +14,7 @@
         "model": "workout_app.Workout",
         "pk": 4,
         "fields": {
-            "parent_program": [2],
+            "created_by": 1,
             "workout_name": "Weeks 1-4",
             "workout_details": "During the first month of strength training, workouts should include 1 to 3 sets of each of the 10 to 12 different exercises with a one-minute rest between exercises. Perform the exercises using a moderate weight. Beginners with a very low level of fitness may need to get in shape before participating in a strength training program that maximizes gains in muscular fitness. In other words, if you have never strength trained before, additional time for muscular adaptation is recommended. For example, instead of performing 8 to 12 exercises with a moderate weight, try performing 4 to 6 different exercises with a light weight, and perhaps perform only 1 set per exercise. This will give you an opportunity to gain confidence in your ability to strength train. A major goal of this training phase is to learn proper form and technique on a variety of upper- and lower-body exercises while practicing training fundamentals (e.g., proper technique, controlled movements, maintaining a normal breathing pattern). Thus, an initial load of 60 to 65 percent of 1RM will allow you to be in the zone of 10 to 12 repetitions on a variety of upper- and lower-body exercises that target all the major muscle groups. Of course, you can use lighter loads when learning a new exercise or attempting to correct a flaw in exercise technique. At least one exercise for all the major muscle groups should be performed."
         }
@@ -23,7 +23,7 @@
         "model": "exercise_app.Exercise",
         "pk": 22,
         "fields":{
-            "parent_workout": [4],
+            "created_by": 1,
             "exercise_name": "Leg Extension",
             "force": "push",
             "sets": "2",
@@ -41,7 +41,7 @@
         "model": "exercise_app.Exercise",
         "pk": 23,
         "fields":{
-            "parent_workout": [4],
+            "created_by": 1,
             "exercise_name": "Seated Leg Curl",
             "force": "pull",
             "sets": "2",
@@ -59,7 +59,7 @@
         "model": "exercise_app.Exercise",
         "pk": 24,
         "fields":{
-            "parent_workout": [4],
+            "created_by": 1,
             "exercise_name": "Machine Chest Press",
             "force": "push",
             "sets": "2",
@@ -77,7 +77,7 @@
         "model": "exercise_app.Exercise",
         "pk": 25,
         "fields":{
-            "parent_workout": [4],
+            "created_by": 1,
             "exercise_name": "Machine Seated Row",
             "force": "pull",
             "sets": "2",
@@ -95,7 +95,7 @@
         "model": "exercise_app.Exercise",
         "pk": 26,
         "fields":{
-        "parent_workout": [4],
+        "created_by": 1,
         "exercise_name": "Machine Biceps Curl",
         "force": "pull",
         "sets": "2",
@@ -113,7 +113,7 @@
         "model": "exercise_app.Exercise",
         "pk": 27,
         "fields":{
-            "parent_workout": [4],
+            "created_by": 1,
             "exercise_name": "Cable triceps extension",
             "force": "push",
             "sets": "2",
@@ -131,7 +131,7 @@
         "model": "exercise_app.Exercise",
         "pk": 28,
         "fields":{
-            "parent_workout": [4],
+            "created_by": 1,
             "exercise_name": "Back extension",
             "force": "pull",
             "sets": "2",
@@ -149,7 +149,7 @@
         "model": "exercise_app.Exercise",
         "pk": 29,
         "fields":{
-            "parent_workout": [4],
+            "created_by": 1,
             "exercise_name": "Stability Ball Crunch",
             "force": "pull",
             "sets": "2",
@@ -167,7 +167,7 @@
         "model": "workout_app.Workout",
         "pk": 5,
         "fields": {
-            "parent_program": [2],
+            "created_by": 1,
             "workout_name": "Weeks 5-8",
             "workout_details": "During weeks 5 through 8, the workout should become more challenging as strength and coordination improve. By varying the program variables, you start to accomplish specific goals in health and fitness, and you prevent the boredom and training plateaus that eventually lead to a lack of adherence to the program or to dropping out of the program entirely. This is a good time to think about the physical and psychosocial benefits of strength training. Although positive changes in physical abilities certainly are important, so too are the qualitative changes associated with a more active lifestyle. During this period, increase the training volume by performing 3 to 4 sets of 10 exercises at a training intensity of about 75 percent of 1RM (8-10 repetitions). Rest for about one to two minutes between sets. As additional sets are performed in the training program, continued effort will determine training outcomes. Thus, you should expect and welcome the feelings of exercise exertion. A major goal of this conditioning phase is to be confident in your exercises while maximizing training adaptations."
         }
@@ -176,7 +176,7 @@
         "model": "exercise_app.Exercise",
         "pk": 30,
         "fields":{
-            "parent_workout": [5],
+            "created_by": 1,
             "exercise_name": "Step Up",
             "force": "push",
             "sets": "3",
@@ -194,7 +194,7 @@
         "model": "exercise_app.Exercise",
         "pk": 31,
         "fields":{
-            "parent_workout": [5],
+            "created_by": 1,
             "exercise_name": "Back Squat",
             "force": "push",
             "sets": "3",
@@ -212,7 +212,7 @@
         "model": "exercise_app.Exercise",
         "pk": 32,
         "fields":{
-            "parent_workout": [5],
+            "created_by": 1,
             "exercise_name": "Dumbell BenchPress",
             "force": "push",
             "sets": "3",
@@ -230,7 +230,7 @@
         "model": "exercise_app.Exercise",
         "pk": 33,
         "fields":{
-            "parent_workout": [5],
+            "created_by": 1,
             "exercise_name": "Dumbbell upright row",
             "force": "pull",
             "sets": "3",
@@ -248,7 +248,7 @@
         "model": "exercise_app.Exercise",
         "pk": 34,
         "fields":{
-            "parent_workout": [5],
+            "created_by": 1,
             "exercise_name": "Dumbbell biceps curls",
             "force": "pull",
             "sets": "3",
@@ -266,7 +266,7 @@
         "model": "exercise_app.Exercise",
         "pk": 35,
         "fields":{
-            "parent_workout": [5],
+            "created_by": 1,
             "exercise_name": "Cable triceps extension",
             "force": "push",
             "sets": "3",
@@ -284,7 +284,7 @@
         "model": "exercise_app.Exercise",
         "pk": 36,
         "fields":{
-            "parent_workout": [5],
+            "created_by": 1,
             "exercise_name": "Back extension",
             "force": "pull",
             "sets": "3",
@@ -302,7 +302,7 @@
         "model": "exercise_app.Exercise",
         "pk": 37,
         "fields":{
-            "parent_workout": [5],
+            "created_by": 1,
             "exercise_name": "Stability Ball Crunch",
             "force": "pull",
             "sets": "3",
@@ -320,7 +320,7 @@
         "model": "workout_app.Workout",
         "pk": 6,
         "fields": {
-            "parent_program": [2],
+            "created_by": 1,
             "workout_name": "Weeks 9-12",
             "workout_details": "After the first eight weeks of strength training, improvements in muscular fitness will occur at a slower rate. Beginners who started strength training with great enthusiasm may become disappointed when gains in muscle strength become less dramatic during the third month of training. This is where you need to understand that a strength training workout that was effective during the first few weeks of training may not be effective in the long term. To make continual gains in muscular fitness and to achieve specific health and fitness goals, higher intensities and a more challenging training program are required (i.e., the principle of progressive overload). This is particularly important for people who want to maximize gains in muscle strength or muscle size. During this phase, perform 3 to 4 sets of 8 exercises at a training intensity of 75 to 80 percent of 1RM (6-8 repetitions). Rest about two to three minutes between sets. Although endless combinations of program variables can be used, continued improvement requires that you increase the training weight and reduce the repetitions to the lower end of the training zone once you have performed the desired number of repetitions on the last set. As a general recommendation, you should perform more sets on exercises for large muscle groups than on exercises for smaller muscle groups. However, research has shown that beginners do not experience greater strength gains when performing more than 4 sets per exercise. Therefore, any exercise should probably not be performed for longer than 4 sets."
         }
@@ -329,7 +329,7 @@
         "model": "exercise_app.Exercise",
         "pk": 38,
         "fields":{
-            "parent_workout": [6],
+            "created_by": 1,
             "exercise_name": "Step Up",
             "force": "push",
             "sets": "3",
@@ -347,7 +347,7 @@
         "model": "exercise_app.Exercise",
         "pk": 39,
         "fields":{
-            "parent_workout": [6],
+            "created_by": 1,
             "exercise_name": "Front Squat",
             "force": "push",
             "sets": "3",
@@ -365,7 +365,7 @@
         "model": "exercise_app.Exercise",
         "pk": 40,
         "fields":{
-            "parent_workout": [6],
+            "created_by": 1,
             "exercise_name": "Barbell bench press",
             "force": "push",
             "sets": "3",
@@ -383,7 +383,7 @@
         "model": "exercise_app.Exercise",
         "pk": 41,
         "fields":{
-            "parent_workout": [6],
+            "created_by": 1,
             "exercise_name": "Dumbbell upright row",
             "force": "pull",
             "sets": "3",
@@ -401,7 +401,7 @@
         "model": "exercise_app.Exercise",
         "pk": 42,
         "fields":{
-            "parent_workout": [6],
+            "created_by": 1,
             "exercise_name": "Dumbbell biceps curls",
             "force": "pull",
             "sets": "3",
@@ -419,7 +419,7 @@
         "model": "exercise_app.Exercise",
         "pk": 43,
         "fields":{
-            "parent_workout": [6],
+            "created_by": 1,
             "exercise_name": "Lying triceps extension",
             "force": "push",
             "sets": "3",
@@ -437,7 +437,7 @@
         "model": "exercise_app.Exercise",
         "pk": 44,
         "fields":{
-            "parent_workout": [6],
+            "created_by": 1,
             "exercise_name": "Back extension",
             "force": "pull",
             "sets": "3",
@@ -455,7 +455,7 @@
         "model": "exercise_app.Exercise",
         "pk": 45,
         "fields":{
-            "parent_workout": [6],
+            "created_by": 1,
             "exercise_name": "Stability Ball Crunch",
             "force": "pull",
             "sets": "3",
@@ -467,6 +467,195 @@
             "secondary_muscle": null ,
             "start_img": "https://github.com/wrkout/exercises.json/blob/cffbbc501abe63b87e7319bd61528f8146151ab4/exercises/Exercise_Ball_Crunch/images/0.jpg?raw=true",
             "end_img": "https://github.com/wrkout/exercises.json/blob/cffbbc501abe63b87e7319bd61528f8146151ab4/exercises/Exercise_Ball_Crunch/images/1.jpg?raw=truel"
+        }
+    },
+    {
+        "model": "workout_program_app.Workout_Program_workouts",
+        "fields": {
+            "workout_program": 2,
+            "workout": 4
+        }
+    },
+    {
+        "model": "workout_program_app.Workout_Program_workouts",
+        "fields": {
+            "workout_program": 2,
+            "workout": 5
+        }
+    },
+    {
+        "model": "workout_program_app.Workout_Program_workouts",
+        "fields": {
+            "workout_program": 2,
+            "workout": 6
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 4,
+            "exercise": 22
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 4,
+            "exercise": 23
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 4,
+            "exercise": 24
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 4,
+            "exercise": 25
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 4,
+            "exercise": 26
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 4,
+            "exercise": 27
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 4,
+            "exercise": 28
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 4,
+            "exercise": 29
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 5,
+            "exercise": 30
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 5,
+            "exercise": 31
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 5,
+            "exercise": 32
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 5,
+            "exercise": 33
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 5,
+            "exercise": 34
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 5,
+            "exercise": 35
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 5,
+            "exercise": 36
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 5,
+            "exercise": 37
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 6,
+            "exercise": 38
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 6,
+            "exercise": 39
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 6,
+            "exercise": 40
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 6,
+            "exercise": 41
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 6,
+            "exercise": 42
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 6,
+            "exercise": 43
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 6,
+            "exercise": 44
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 6,
+            "exercise": 45
         }
     }
 ]
