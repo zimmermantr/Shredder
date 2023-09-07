@@ -24,13 +24,25 @@ class User_permissions(APIView):
 
 class All_programs(User_permissions):
     def get(self, request):
-        programs = UserWorkoutProgramSerializer(
-            request.user.user_programs.order_by("program_name"), many=True
+        workout_programs = Workout_Program.objects.filter(created_by__in=[1,request.user.id])
+        return Response(
+            WorkoutProgramSerializer(
+                workout_programs, many=True,
+            ).data
         )
-        return Response(programs.data)
+
+        # programs = UserWorkoutProgramSerializer(
+        #     request.user.user_programs.order_by("program_name"), many=True
+        # )
+        # return Response(programs.data)
+
 
     #  Could be used to allow users to create their own workout program, starting as an empty list, and then adding workouts to that list
-
+    def post(self, request):
+        new_workout_program = Workout_Program(**request.data)
+        new_workout_program.created_by = request.user
+        new_workout_program.save()
+        return Response(WorkoutProgramSerializer(new_workout_program).data, status=HTTP_201_CREATED)
     # def post(self, request):
     #     a_user = get_object_or_404(App_user, pk=request.user.pk)
     #     new_program = User_Workout_Program(**request.data)
@@ -39,53 +51,53 @@ class All_programs(User_permissions):
     #     a_program = UserWorkoutProgramSerializer(new_program)
     #     return Response(a_program.data, status=HTTP_201_CREATED)
 
-    def post(self, request):
-        user = request.user
-        program_serializer = UserWorkoutProgramSerializer(data=request.data)
-        if program_serializer.is_valid():
-            program = program_serializer.save()
+    # def post(self, request):
+    #     user = request.user
+    #     program_serializer = UserWorkoutProgramSerializer(data=request.data)
+    #     if program_serializer.is_valid():
+    #         program = program_serializer.save()
 
-            # Create User_Workout instances
-            if "workouts" in request.data:
-                workouts_data = request.data["workouts"]
-                workouts = []
-                for workout_data in workouts_data:
-                    workout_data["parent_program"] = program.pk
-                    workout_serializer = UserWorkoutSerializer(data=workout_data)
-                    if workout_serializer.is_valid():
-                        workout = workout_serializer.save()
-                        workouts.append(workout)
+    #         # Create User_Workout instances
+    #         if "workouts" in request.data:
+    #             workouts_data = request.data["workouts"]
+    #             workouts = []
+    #             for workout_data in workouts_data:
+    #                 workout_data["parent_program"] = program.pk
+    #                 workout_serializer = UserWorkoutSerializer(data=workout_data)
+    #                 if workout_serializer.is_valid():
+    #                     workout = workout_serializer.save()
+    #                     workouts.append(workout)
 
-                # Set the workouts relationship for the program
-                program.workouts.set(workouts)
+    #             # Set the workouts relationship for the program
+    #             program.workouts.set(workouts)
 
-                # Create User_Exercise instances
-                for workout in workouts:
-                    if "exercises" in request.data:
-                        exercises_data = request.data["exercises"]
-                        exercises = []
-                        for exercise_data in exercises_data:
-                            exercise_data["parent_workout"] = workout.pk
-                            exercise_serializer = UserExerciseSerializer(
-                                data=exercise_data
-                            )
-                            if exercise_serializer.is_valid():
-                                exercise = exercise_serializer.save()
-                                exercises.append(exercise)
+    #             # Create User_Exercise instances
+    #             for workout in workouts:
+    #                 if "exercises" in request.data:
+    #                     exercises_data = request.data["exercises"]
+    #                     exercises = []
+    #                     for exercise_data in exercises_data:
+    #                         exercise_data["parent_workout"] = workout.pk
+    #                         exercise_serializer = UserExerciseSerializer(
+    #                             data=exercise_data
+    #                         )
+    #                         if exercise_serializer.is_valid():
+    #                             exercise = exercise_serializer.save()
+    #                             exercises.append(exercise)
 
-                        # Set the exercises relationship for the workout
-                        workout.exercises.set(exercises)
+    #                     # Set the exercises relationship for the workout
+    #                     workout.exercises.set(exercises)
 
-                return Response(program_serializer.data, status=HTTP_201_CREATED)
-        return Response(program_serializer.errors, status=HTTP_400_BAD_REQUEST)
+    #             return Response(program_serializer.data, status=HTTP_201_CREATED)
+    #     return Response(program_serializer.errors, status=HTTP_400_BAD_REQUEST)
 
 
 class A_program(User_permissions):
     def get(self, request, id):
-        a_program = UserWorkoutProgramSerializer(
-            get_object_or_404(request.user.user_programs, id=id)
-        )
-        return Response(a_program.data)
+        workout_program = get_object_or_404(Workout_Program, id=id)
+        if workout_program.created_by.id not in [1,request.user.id]:
+            return Response("not autorized", status=HTTP_400_BAD_REQUEST)
+        return Response(WorkoutProgramSerializer(workout_program).data)
 
     #  Could be used to allow users to modify the name and details of their workout programs
     # def put(self, request, id):
@@ -99,13 +111,34 @@ class A_program(User_permissions):
     #         print(e)
     #         return Response("Something went wrong", status=HTTP_400_BAD_REQUEST)
 
+    def put(self, request, id):
+        try:
+            workout_program = Workout_Program.objects.get(id=id) 
+            if str(workout_program.created_by.id) != str(request.user.id):
+                return Response("doesn't belong to user", status=HTTP_400_BAD_REQUEST)
+            Workout_Program.objects.filter(id=id).update(**request.data)
+            return Response(status=HTTP_204_NO_CONTENT)
+        except Exception as e:
+            print(e)
+            return Response("something went wrong", status=HTTP_400_BAD_REQUEST)
+    
+    
     def delete(self, request, id):
+        workout_program = Workout_Program.objects.get(id=id)
+        if str(workout_program.created_by.id) != str(request.user.id):
+            return Response("doesn't belong to user", status=HTTP_400_BAD_REQUEST)
+        workout_program.delete()
+        return Response(status=HTTP_204_NO_CONTENT)
+
+
+
+
         # user = request.user
         # program = user.workout_programs.get(id=id)
         # user.workout_programs.remove(program.id)
 
-        a_program = get_object_or_404(request.user.user_programs, id=id)
-        a_program.workouts.exercises.all().delete()
-        a_program.workouts.all().delete()
-        a_program.delete()
-        return Response(status=HTTP_204_NO_CONTENT)
+        # a_program = get_object_or_404(request.user.user_programs, id=id)
+        # a_program.workouts.exercises.all().delete()
+        # a_program.workouts.all().delete()
+        # a_program.delete()
+        # return Response(status=HTTP_204_NO_CONTENT)
