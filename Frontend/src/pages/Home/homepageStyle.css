@@ -1,5 +1,6 @@
 .MainHome {
     background: #1b1919;
+    
 }
 
 .homePic {
@@ -10,7 +11,6 @@
     border: 1px solid black;
     height: 30rem;
 
-    
     display: flex;
     
     justify-content: space-between;
@@ -22,7 +22,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #1b1919b2;
+    background: #100e0eb2;
 }
 
 .homeText h1 {
@@ -40,8 +40,8 @@
     text-shadow: 1px 1px 10px rgb(162, 162, 162);
 }
 
-
 /* features header */
+
 .featuresHeader {
     margin-top: 3rem;
 
@@ -51,8 +51,6 @@
 
     text-align: center;
     color: whitesmoke;
-
-
 }
 
 .featuresHeader .f1 {
@@ -63,10 +61,8 @@
 
 .featuresHeader .f2 {
     font-size: 1.5rem;
-    width: 33%;
+    width: 42%;
 }
-
-
 
 /* Features containers */
 
@@ -81,31 +77,23 @@
 
     color: whitesmoke;
 }
-.cont {
-    width: 30%;
-    height: 12rem;
-    text-align: center;
-    border: 1px rgb(71, 71, 71) solid;
-    border-radius: 2rem;
-    padding: 5px;
-    
-}
-.cont .fT {
-    padding: 1rem;
-    font-size: 1.5rem;
-}
-
-
-
 
 .Why {
     margin-top: 5rem;
-    width: 35%;
+    /* width: 35%; */
     padding: 2rem;
 
     font-size: 1.25rem;
     color: whitesmoke;
 
-    border: grey 1px solid;
+    /* border: grey 1px solid; */
 
+    background-image: url('/interior-gym.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* height: 20vh; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
