@@ -12,7 +12,7 @@ export const ProteinReq = (fitnessLevel, weight) => fitnessLevel * weight;  // k
 
 
 export const FluidReq = (age, weight) => {   // kg
-    const fluid = 1500;
+    let fluid = 1500;
     const newWeight = weight - 20;
 
     if (weight<20){
