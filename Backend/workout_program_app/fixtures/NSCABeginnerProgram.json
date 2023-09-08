@@ -200,12 +200,12 @@
             "sets": "3",
             "reps": "10",
             "difficulty": "beginner",
-            "equipment": "Stability Ball",
+            "equipment": "barbell",
             "instructions":  "STARTING POSITION ATHLETE 1. Position the rack so that the bar is approximately at shoulder height. 2. Step under the bar to place it on the upper portion of the back and shoulders. The bar should not rest on your vertebrae. 3. Grip the bar at a comfortable position, about a thumb's length from the knurling (the rough part of the bar) or slightly wider than shoulder width. 4. Lift the bar off the rack by extending the hips and knees, then step back, placing the feet about shoulder-width apart and the toes pointed slightly outward. Keep the bar parallel to the floor and the head in a forward facing,neutral position.",
-            "primary_muscle": "Gluteals, hamstrings",
-            "secondary_muscle": "quadriceps",
-            "start_img": "https://github.com/wrkout/exercises.json/blob/cffbbc501abe63b87e7319bd61528f8146151ab4/exercises/Exercise_Ball_Crunch/images/0.jpg?raw=true",
-            "end_img": "https://github.com/wrkout/exercises.json/blob/cffbbc501abe63b87e7319bd61528f8146151ab4/exercises/Exercise_Ball_Crunch/images/1.jpg?raw=truel"
+            "primary_muscle": "quadriceps",
+            "secondary_muscle": "calves, glutes, hamstrings, lower back",
+            "start_img": "https://github.com/wrkout/exercises.json/blob/master/exercises/Barbell_Full_Squat/images/0.jpg",
+            "end_img": "https://github.com/wrkout/exercises.json/blob/master/exercises/Barbell_Full_Squat/images/1.jpg"
         }
     },
     {
