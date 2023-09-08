@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { navItems, fitnessDropdown, nutritionDropdown, userDropdown } from "./NavItems";
 import './navStyle.css'
-import { Button } from "./Button";
+import Button from "./Button.jsx";
 import { Dropdown } from "./Dropdown";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { userContext } from "../../App";
+import LOButton from "./LOButton";
 
 export const Nav = () => {
+    const {user, setUser} = useContext(userContext);
     const [ntrDropdown, setNtrDropdown] = useState(false);
     const [fitDropdown, setFitDropdown] = useState(false);
     const [myPlanDropdown, setMyPlanDropdown] = useState(false);
@@ -102,7 +105,8 @@ export const Nav = () => {
                         })
                     }
                 </ul>
-                <Button />
+                {user ? <LOButton /> : <Button text='Log In' linkto='/login/' />}
+                
             </nav>
             
 

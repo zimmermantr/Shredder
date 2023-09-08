@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Button from '../../Nav/Button'
+import Button from '../../Nav/Button.jsx'
 
 const Join = styled.div`
 height: 10rem;
@@ -34,7 +34,7 @@ const JoinNow = ({title, text}) => {
                 <JoinTitle>{title}</JoinTitle>
                 <JoinText>{text}</JoinText>
             </JoinLeft>
-            <Button />
+            <Button text='Sign Up' linkto='/signup/' />
         </Join>
     )
 }
