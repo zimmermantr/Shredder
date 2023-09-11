@@ -17,7 +17,7 @@ class User_permissions(APIView):
 
 class All_workouts(User_permissions):
     def get(self, request):
-        workouts = Workout.objects.filter(created_by__in=[1,request.user.id])
+        workouts = Workout.objects.filter(created_by__in=[1,request.user.id]).order_by("pk")
         return Response(WorkoutSerializer(
                 workouts, many=True,
             ).data)

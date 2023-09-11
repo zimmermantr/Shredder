@@ -7,12 +7,13 @@
             "program_details": "full body calisthenics based workout, with minimal equipment required",
             "program_difficulty": "beginner",
             "program_duration": "8 weeks",
-            "frequency_per_week": 4
+            "frequency_per_week": 4,
+            "created_by": 1
         }
     },
     {
         "model": "workout_app.Workout",
-        "pk": 4,
+        "pk": 7,
         "fields": {
             "workout_name": "Upper Body A",
             "workout_details": "Reps are done based off an RPE (rate of percieved exertion) scale. For example, if the reps call for 7 RPE, you should stop when you can still do 2-3 reps after, while reps calling for 9 RPE should be nearing muscle failure.",
@@ -21,7 +22,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 22,
+        "pk": 46,
         "fields": {
             
             "exercise_name": "Decline Push-Ups",
@@ -40,7 +41,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 23,
+        "pk": 47,
         "fields": {
             "exercise_name": "Chin-Ups ",
             "force": "pull",
@@ -58,7 +59,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 24,
+        "pk": 48,
         "fields": {
             "exercise_name": "Chair Dips",
             "force": "push",
@@ -76,7 +77,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 25,
+        "pk": 49,
         "fields": {
             "exercise_name": "Wide Grip Pull-Ups",
             "force": "pull",
@@ -93,7 +94,7 @@
         }
     },{
         "model": "exercise_app.Exercise",
-        "pk": 26,
+        "pk": 50,
         "fields": {
             "exercise_name": "Push-Ups ",
             "force": "push",
@@ -111,7 +112,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 27,
+        "pk": 51,
         "fields": {
             "exercise_name": "Laying Leg Raises(beginner)/Hanging Leg Raises(Advanced)",
             "force": "pull",
@@ -129,7 +130,7 @@
     },
     {
         "model": "workout_app.Workout",
-        "pk": 5,
+        "pk": 8,
         "fields": {
             "workout_name": "Lower Body A",
             "workout_details": "Reps are done based off an RPE (rate of percieved exertion) scale. For example, if the reps call for 7 RPE, you should stop when you can still do 2-3 reps after, while reps calling for 9 RPE should be nearing muscle failure.",
@@ -138,7 +139,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 28,
+        "pk": 52,
         "fields": {
             "exercise_name": "Squats",
             "force": "push",
@@ -156,7 +157,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 29,
+        "pk": 53,
         "fields": {
             "exercise_name": "Single-Leg Straight-Leg Deadlift",
             "force": "pull",
@@ -174,7 +175,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 30,
+        "pk": 54,
         "fields": {
             "exercise_name": "Split Squats",
             "force": "push",
@@ -192,7 +193,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 31,
+        "pk": 55,
         "fields": {
             "exercise_name": "Calf Raises",
             "force": "push",
@@ -210,7 +211,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 32,
+        "pk": 56,
         "fields": {
             "exercise_name": "Rear Lunges",
             "force": "push",
@@ -228,7 +229,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 33,
+        "pk": 57,
         "fields": {
             "exercise_name": "Planks",
             "force": "push",
@@ -246,7 +247,7 @@
     },
     {
         "model": "workout_app.Workout",
-        "pk": 6,
+        "pk": 9,
         "fields": {
             "workout_name": "Upper Body B",
             "workout_details": "Reps are done based off an RPE (rate of percieved exertion) scale. For example, if the reps call for 7 RPE, you should stop when you can still do 2-3 reps after, while reps calling for 9 RPE should be nearing muscle failure.",
@@ -255,7 +256,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 34,
+        "pk": 58,
         "fields": {
             "exercise_name": "Pike Push-Up ",
             "force": "push",
@@ -273,7 +274,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 35,
+        "pk": 59,
         "fields": {
             "exercise_name": "Pull-Ups",
             "force": "pull",
@@ -291,7 +292,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 36,
+        "pk": 60,
         "fields": {
             "exercise_name": "Decline Push-Ups ",
             "force": "push",
@@ -309,7 +310,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 37,
+        "pk": 61,
         "fields": {
             "exercise_name": "Wide Grip Pull-Ups",
             "force": "pull",
@@ -327,7 +328,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 38,
+        "pk": 62,
         "fields": {
             "exercise_name": "Push-Ups ",
             "force": "push",
@@ -345,7 +346,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 39,
+        "pk": 63,
         "fields": {
             "exercise_name": "Chair Dips",
             "force": "push",
@@ -363,7 +364,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 40,
+        "pk": 64,
         "fields": {
             "exercise_name": "Laying Leg Raises(beginner)/Hanging Leg Raises(Advanced)",
             "force": "pull",
@@ -381,7 +382,7 @@
     },
     {
         "model": "workout_app.Workout",
-        "pk": 7,
+        "pk": 10,
         "fields": {
             "workout_name": "Lower Body B",
             "workout_details": "Reps are done based off an RPE (rate of percieved exertion) scale. For example, if the reps call for 7 RPE, you should stop when you can still do 2-3 reps after, while reps calling for 9 RPE should be nearing muscle failure.",
@@ -390,7 +391,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 41,
+        "pk": 65,
         "fields": {
             "exercise_name": "Squats",
             "force": "push",
@@ -408,7 +409,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 42,
+        "pk": 66,
         "fields": {
             "exercise_name": "Single-Leg Straight-Leg Deadlift",
             "force": "pull",
@@ -426,7 +427,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 43,
+        "pk": 67,
         "fields": {
             "exercise_name": "Split Squats",
             "force": "push",
@@ -444,7 +445,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 44,
+        "pk": 68,
         "fields": {
             "exercise_name": "Calf Raises",
             "force": "push",
@@ -462,7 +463,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 45,
+        "pk": 69,
         "fields": {
             "exercise_name": "Squat Jumps",
             "force": "push",
@@ -480,7 +481,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 46,
+        "pk": 70,
         "fields": {
             "exercise_name": "Planks",
             "force": "push",
@@ -504,12 +505,13 @@
             "program_details": "full body split, reqruires FULL GYM for equipment",
             "program_difficulty": "beginner",
             "program_duration": "8 weeks",
-            "frequency_per_week": 3
+            "frequency_per_week": 3,
+            "created_by": 1
         }
     },
     {
         "model": "workout_app.Workout",
-        "pk": 8,
+        "pk": 11,
         "fields": {
             "workout_name": "Full Body Day 1",
             "workout_details": "",
@@ -518,7 +520,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 46,
+        "pk": 71,
         "fields": {
             "exercise_name": "Goblet Squat",
             "force": "push",
@@ -536,7 +538,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 47,
+        "pk": 72,
         "fields": {
             "exercise_name": "Lying Leg Curl",
             "force": "pull",
@@ -554,7 +556,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 48,
+        "pk": 73,
         "fields": {
             "exercise_name": "Standing Calf Raise",
             "force": "push",
@@ -572,7 +574,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 47,
+        "pk": 74,
         "fields": {
             "exercise_name": "Dumbell Row",
             "force": "pull",
@@ -590,7 +592,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 49,
+        "pk": 75,
         "fields": {
             "exercise_name": "Lat Pull Down",
             "force": "pull",
@@ -608,7 +610,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 50,
+        "pk": 76,
         "fields": {
             "exercise_name": "Incline Dumbell Bench Press",
             "force": "push",
@@ -626,7 +628,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 51,
+        "pk": 77,
         "fields": {
             "exercise_name": "Lateral Raise",
             "force": "push",
@@ -644,7 +646,7 @@
     },
     {
         "model": "workout_app.Workout",
-        "pk": 9,
+        "pk": 12,
         "fields": {
             "workout_name": "Full Body Day 2",
             "workout_details": "",
@@ -653,7 +655,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 52,
+        "pk": 78,
         "fields": {
             "exercise_name": "Dumbbell Stiff Leg Deadlift",
             "force": "pull",
@@ -671,7 +673,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 53,
+        "pk": 79,
         "fields": {
             "exercise_name": " Leg Extension",
             "force": "push",
@@ -689,7 +691,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 54,
+        "pk": 80,
         "fields": {
             "exercise_name": "Assisted Pull Up Machine",
             "force": "pull",
@@ -708,7 +710,7 @@
 
     {
         "model": "exercise_app.Exercise",
-        "pk": 55,
+        "pk": 81,
         "fields": {
             "exercise_name": "Seated Cable Row",
             "force": "pull",
@@ -726,7 +728,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 56,
+        "pk": 82,
         "fields": {
             "exercise_name": "Seated Dumbbell Press",
             "force": "push",
@@ -744,7 +746,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 57,
+        "pk": 83,
         "fields": {
             "exercise_name": "Dumbbell Bench Press",
             "force": "push",
@@ -762,7 +764,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 58,
+        "pk": 84,
         "fields": {
             "exercise_name": "Skullcrusher",
             "force": "push",
@@ -780,7 +782,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 59,
+        "pk": 85,
         "fields": {
             "exercise_name": "Dumbbell Curl",
             "force": "pull",
@@ -798,7 +800,7 @@
     },
     {
         "model": "workout_app.Workout",
-        "pk": 10,
+        "pk": 13,
         "fields": {
             "workout_name": "Full Body Day 3",
             "workout_details": "",
@@ -807,7 +809,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 60,
+        "pk": 86,
         "fields": {
             "exercise_name": "Leg Press",
             "force": "push",
@@ -825,7 +827,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 61,
+        "pk": 87,
         "fields": {
             "exercise_name": "Walking Lunge",
             "force": "push",
@@ -843,7 +845,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 62,
+        "pk": 88,
         "fields": {
             "exercise_name": "Standing Calf Raise",
             "force": "push",
@@ -862,7 +864,7 @@
 
     {
         "model": "exercise_app.Exercise",
-        "pk": 63,
+        "pk": 89,
         "fields": {
             "exercise_name": "Seated Cable Row",
             "force": "",
@@ -880,7 +882,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 64,
+        "pk": 90,
         "fields": {
             "exercise_name": "Barbell Row",
             "force": "pull",
@@ -898,7 +900,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 65,
+        "pk": 91,
         "fields": {
             "exercise_name": "Cable Face Pull",
             "force": "pull",
@@ -916,7 +918,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 66,
+        "pk": 92,
         "fields": {
             "exercise_name": "Push Up",
             "force": "push",
@@ -934,7 +936,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 67,
+        "pk": 93,
         "fields": {
             "exercise_name": "Close Grip Push Up",
             "force": "push",
@@ -952,7 +954,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 68,
+        "pk": 94,
         "fields": {
             "exercise_name": "Cable Curl",
             "force": "pull",
@@ -976,12 +978,13 @@
             "program_details": "This full body split will repeate the two workouts during the week. Day 1 will also be the workout for Day 4, Day 2 will be the same workout for Day 5, and Day 3 will be the same workout for Day 6.",
             "program_difficulty": "beginner",
             "program_duration": "6 weeks",
-            "frequency_per_week": 6
+            "frequency_per_week": 6,
+            "created_by": 1
         }
     },
     {
         "model": "workout_app.Workout",
-        "pk": 11,
+        "pk": 14,
         "fields": {
             "workout_name": "Upper Body Superset Workout (Day1 and Day3)",
             "workout_details": "Exercises will be group by two (exp: 1A + 1B). These are designed to be performed as super sets. So, if you have 3 sets of both exercise, you will perform the first set of the first exercise and immedietly follow it with the first set of the second exercise. ",
@@ -990,7 +993,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 69,
+        "pk": 95,
         "fields": {
             "exercise_name": "1A. Flat Barbell Bench Press",
             "force": "push",
@@ -1008,7 +1011,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 70,
+        "pk": 96,
         "fields": {
             "exercise_name": "1B. Dumbell Pullover",
             "force": "push",
@@ -1026,7 +1029,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 71,
+        "pk": 97,
         "fields": {
             "exercise_name": "2A. Incline Dumbbell Press",
             "force": "push",
@@ -1044,7 +1047,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 72,
+        "pk": 98,
         "fields": {
             "exercise_name": "2B. Barbell Row",
             "force": "pull",
@@ -1062,7 +1065,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 73,
+        "pk": 99,
         "fields": {
             "exercise_name": "3A. Lateral Raise",
             "force": "pull",
@@ -1080,7 +1083,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 74,
+        "pk": 100,
         "fields": {
             "exercise_name": "3B. Rear Lateral Raise",
             "force": "pull",
@@ -1098,7 +1101,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 75,
+        "pk": 101,
         "fields": {
             "exercise_name": "4A. Barbell Curl",
             "force": "pull",
@@ -1116,7 +1119,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 76,
+        "pk": 102,
         "fields": {
             "exercise_name": "4B. Lying Dumbbell Triceps Extension",
             "force": "pull",
@@ -1134,7 +1137,7 @@
     },
     {
         "model": "workout_app.Workout",
-        "pk": 11,
+        "pk": 15,
         "fields": {
             "workout_name": "Lower Body Superset Workout (Day2 and Day4)",
             "workout_details": "Exercises will be group by two (exp: 1A + 1B). These are designed to be performed as super sets. So, if you have 3 sets of both exercise, you will perform the first set of the first exercise and immedietly follow it with the first set of the second exercise. ",
@@ -1143,7 +1146,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 77,
+        "pk": 103,
         "fields": {
             "exercise_name": "1A. Stiff-Leg Deadlift",
             "force": "pull",
@@ -1161,7 +1164,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 78,
+        "pk": 104,
         "fields": {
             "exercise_name": "1B. Walking Lunge",
             "force": "pull",
@@ -1179,7 +1182,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 79,
+        "pk": 105,
         "fields": {
             "exercise_name": "2A. Goblet Squat",
             "force": "push",
@@ -1197,7 +1200,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 80,
+        "pk": 106,
         "fields": {
             "exercise_name": "2B. Leg Extension",
             "force": "push",
@@ -1215,7 +1218,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 81,
+        "pk": 107,
         "fields": {
             "exercise_name": "3A. Squat Jumps",
             "force": "push",
@@ -1233,7 +1236,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 82,
+        "pk": 108,
         "fields": {
             "exercise_name": "3B. Mountain Climbers",
             "force": "pull",
@@ -1251,7 +1254,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 83,
+        "pk": 109,
         "fields": {
             "exercise_name": "4A. Seated Calf Raise",
             "force": "push",
@@ -1269,7 +1272,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 84,
+        "pk": 110,
         "fields": {
             "exercise_name": "4B. Standing Calf Raise",
             "force": "push",
@@ -1287,7 +1290,7 @@
     }, 
     {
         "model": "workout_app.Workout",
-        "pk": 12,
+        "pk": 16,
         "fields": {
             "workout_name": "Cardio and Abs (Day4 and Day6)",
             "workout_details": "Perform 15-30 minutes of moderate-high intensity cardio before doing ab circuit",
@@ -1296,7 +1299,7 @@
     },
     {
         "model": "exercise_app.Exercise",
-        "pk": 84,
+        "pk": 111,
         "fields": {
             "exercise_name": "Weighted Crunch",
             "force": "pull",
@@ -1314,7 +1317,7 @@
     }, 
     {
         "model": "exercise_app.Exercise",
-        "pk": 85,
+        "pk": 112,
         "fields": {
             "exercise_name": "Roatating Mountain Climbers",
             "force": "push",
@@ -1332,7 +1335,7 @@
     }, 
     {
         "model": "exercise_app.Exercise",
-        "pk": 85,
+        "pk": 113,
         "fields": {
             "exercise_name": "Seated Twist/Russian Twists",
             "force": "pull",
@@ -1350,7 +1353,7 @@
     }, 
     {
         "model": "exercise_app.Exercise",
-        "pk": 86,
+        "pk": 114,
         "fields": {
             "exercise_name": "Laying Leg Raises(beginner)/Hanging Leg Raises(Advanced)",
             "force": "pull",
@@ -1368,7 +1371,7 @@
     }, 
     {
         "model": "exercise_app.Exercise",
-        "pk": 87,
+        "pk": 115,
         "fields": {
             "exercise_name": "Plank",
             "force": "",
@@ -1383,8 +1386,570 @@
             "end_img": "",
             "created_by": 1
         }
-    }
+    },
+    {
+        "model": "workout_program_app.Workout_Program_workouts",
+        "fields": {
+            "workout_program": 3,
+            "workout": 7
+        }
+    },
+    {
+        "model": "workout_program_app.Workout_Program_workouts",
+        "fields": {
+            "workout_program": 3,
+            "workout": 8
+        }
+    },
+    {
+        "model": "workout_program_app.Workout_Program_workouts",
+        "fields": {
+            "workout_program": 3,
+            "workout": 9
+        }
+    },
+    {
+        "model": "workout_program_app.Workout_Program_workouts",
+        "fields": {
+            "workout_program": 3,
+            "workout": 10
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 7,
+            "exercise": 46
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 7,
+            "exercise": 47
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 7,
+            "exercise": 48
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 7,
+            "exercise": 49
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 7,
+            "exercise": 50
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 7,
+            "exercise": 51
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 8,
+            "exercise": 52
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 8,
+            "exercise": 53
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 8,
+            "exercise": 54
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 8,
+            "exercise": 55
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 8,
+            "exercise": 56
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 8,
+            "exercise": 57
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 9,
+            "exercise": 58
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 9,
+            "exercise": 59
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 9,
+            "exercise": 60
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 9,
+            "exercise": 61
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 9,
+            "exercise": 62
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 9,
+            "exercise": 63
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 9,
+            "exercise": 64
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 10,
+            "exercise": 65
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 10,
+            "exercise": 66
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 10,
+            "exercise": 67
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 10,
+            "exercise": 68
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 10,
+            "exercise": 69
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 10,
+            "exercise": 70
+        }
+    },
+
+
+
+    {
+        "model": "workout_program_app.Workout_Program_workouts",
+        "fields": {
+            "workout_program": 4,
+            "workout": 11
+        }
+    },
+    {
+        "model": "workout_program_app.Workout_Program_workouts",
+        "fields": {
+            "workout_program": 4,
+            "workout": 12
+        }
+    },
+    {
+        "model": "workout_program_app.Workout_Program_workouts",
+        "fields": {
+            "workout_program": 5,
+            "workout": 13
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 11,
+            "exercise": 71
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 11,
+            "exercise": 72
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 11,
+            "exercise": 73
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 11,
+            "exercise": 74
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 11,
+            "exercise": 75
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 11,
+            "exercise": 76
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 11,
+            "exercise": 77
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 12,
+            "exercise": 78
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 12,
+            "exercise": 79
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 12,
+            "exercise": 80
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 12,
+            "exercise": 81
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 12,
+            "exercise": 82
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 12,
+            "exercise": 83
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 12,
+            "exercise": 84
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 12,
+            "exercise": 85
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 13,
+            "exercise": 86
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 13,
+            "exercise": 87
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 13,
+            "exercise": 88
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 13,
+            "exercise": 89
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 13,
+            "exercise": 90
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 13,
+            "exercise": 91
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 13,
+            "exercise": 92
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 13,
+            "exercise": 93
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 13,
+            "exercise": 94
+        }
+    },
+
     
-
-
+    {
+        "model": "workout_program_app.Workout_Program_workouts",
+        "fields": {
+            "workout_program": 5,
+            "workout": 14
+        }
+    },
+    {
+        "model": "workout_program_app.Workout_Program_workouts",
+        "fields": {
+            "workout_program": 5,
+            "workout": 15
+        }
+    },
+    {
+        "model": "workout_program_app.Workout_Program_workouts",
+        "fields": {
+            "workout_program": 5,
+            "workout": 16
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 14,
+            "exercise": 95
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 14,
+            "exercise": 96
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 14,
+            "exercise": 97
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 14,
+            "exercise": 98
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 14,
+            "exercise": 99
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 14,
+            "exercise": 100
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 14,
+            "exercise": 101
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 14,
+            "exercise": 102
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 15,
+            "exercise": 103
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 15,
+            "exercise": 104
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 15,
+            "exercise": 105
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 15,
+            "exercise": 106
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 15,
+            "exercise": 107
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 15,
+            "exercise": 108
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 15,
+            "exercise": 109
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 15,
+            "exercise": 110
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 16,
+            "exercise": 111
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 16,
+            "exercise": 112
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 16,
+            "exercise": 113
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 16,
+            "exercise": 114
+        }
+    },
+    {
+        "model": "workout_app.Workout_exercises",
+        "fields": {
+            "workout": 16,
+            "exercise": 115
+        }
+    }
 ]

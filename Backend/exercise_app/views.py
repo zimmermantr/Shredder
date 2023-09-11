@@ -26,7 +26,7 @@ class All_exercises(User_permissions):
     #     )
     
     def get(self, request):
-        exercises = Exercise.objects.filter(created_by__in=[1,request.user.id])
+        exercises = Exercise.objects.filter(created_by__in=[1,request.user.id]).order_by("pk")
         return Response(
             ExerciseSerializer(
                 exercises, many=True,
