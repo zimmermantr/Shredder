@@ -14,8 +14,14 @@ class Workout(models.Model):
     #     Workout_Program, related_name="workouts", blank=True
     # )
     exercises = models.ManyToManyField(Exercise, related_name="workouts", blank=True)
+
     created_by = models.ForeignKey(App_user, on_delete=models.CASCADE, blank=True, null=True)
 
+
 class User_Workout(models.Model):
-    workout_id = models.ForeignKey(Workout,related_name="workout_copy", on_delete=models.CASCADE)
-    user_id = models.ForeignKey(App_user, related_name="userWorkouts", on_delete=models.CASCADE)
+    workout_id = models.ForeignKey(
+        Workout, related_name="workout_copy", on_delete=models.CASCADE
+    )
+    user_id = models.ForeignKey(
+        App_user, related_name="userWorkouts", on_delete=models.CASCADE
+    )

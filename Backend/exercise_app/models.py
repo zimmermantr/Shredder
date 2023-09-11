@@ -2,6 +2,7 @@ from django.db import models
 from django.core import validators as v
 from user_app.models import App_user
 
+
 # Create your models here.
 class Exercise(models.Model):
     exercise_name = models.CharField(max_length=75)
@@ -19,5 +20,7 @@ class Exercise(models.Model):
 
 
 class User_Exercise(models.Model):
-    user_id = models.ForeignKey(App_user, related_name="userExercises", on_delete=models.CASCADE)
+    user_id = models.ForeignKey(
+        App_user, related_name="userExercises", on_delete=models.CASCADE
+    )
     exercise_id = models.ForeignKey(Exercise, on_delete=models.CASCADE)
