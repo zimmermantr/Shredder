@@ -5,6 +5,8 @@ import Nutrition from "./pages/Nutrition/Nutrition";
 import LogIn from "./pages/UserAuth/LogIn";
 import SignUp from "./pages/UserAuth/SignUp";
 import Survey from "./pages/Survey/Survey";
+import WorkoutPrograms from "./pages/Workout-Programs/WorkoutPrograms"
+import FullWorkoutProgram from "./pages/Workout-Programs/FullProgram";
 
 
 export const router = createBrowserRouter([
@@ -33,6 +35,14 @@ export const router = createBrowserRouter([
         {
             path: 'user_survey',
             element: <Survey />
+        },
+        {
+            path: 'workout_programs',
+            element: <WorkoutPrograms />
+        },
+        {
+            path: 'programs/:id/',
+            element: <FullWorkoutProgram />
         }
 
 
