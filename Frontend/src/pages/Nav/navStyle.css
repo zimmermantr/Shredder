@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 0;
-    padding-bottom: -10px;
+    /* padding-bottom: -10px; */
     /* width: 3.5rem; */
 }
 .logo img {
@@ -48,7 +48,7 @@
     transition: 0.3s all ease-out;
 }
 .nav-item a:hover {
-    background-color: rgba(199, 118, 246, 0.719);   /* rgb(0,212,212) */
+    background: rgba(134, 130, 136, 0.719);   /* rgb(0,212,212) */
 }
 
 
