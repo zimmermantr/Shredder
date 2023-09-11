@@ -1,10 +1,13 @@
 .Navbar {
+    width: 100%;
     height: 4rem;
     background: #1b1919;
+    position: inherit;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .logo {
     display: flex;
     flex-direction: column;
