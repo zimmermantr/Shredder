@@ -53,5 +53,6 @@ class A_workout(User_permissions):
         if str(workout.created_by.id) != str(request.user.id):
             return Response("doesn't belong to user", status=HTTP_400_BAD_REQUEST)
         # Workout.objects.filter(id=workout_id).delete()
+        workout.exercises.all().delete()
         workout.delete()
         return Response(status=HTTP_204_NO_CONTENT)

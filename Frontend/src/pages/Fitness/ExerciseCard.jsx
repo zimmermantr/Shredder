@@ -62,7 +62,7 @@ export default function ExerciseCard(props){
             )}
             {!isOnExercisesPage && (
                 <div className="flex justify-center items-center">
-                    <button className="ml-auto bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded " onClick={() => {deleteExercise(props.workout_id, props.exercise_id)}}>Delete</button>
+                    <button className="ml-auto bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded " onClick={() => {deleteExercise(props.exercise_id)}}>Delete</button>
                 </div>
             )}
         </div>

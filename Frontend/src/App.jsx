@@ -41,12 +41,12 @@ function App() {
       console.error("Error adding exercise to workout:", error)
     }
   }
-  const deleteExercise = async (workoutId, exerciseId) => {
+  const deleteExercise = async (exerciseId) => {
     try{
       const token = localStorage.getItem("token");
       if (token) {
         api.defaults.headers.common["Authorization"] = `Token ${token}`;
-        let response = await api.delete(`workouts/${workoutId}/exercises/${exerciseId}`);
+        let response = await api.delete(`exercises/${exerciseId}`);
         fetchWorkouts();
       }
     }catch (error) {
