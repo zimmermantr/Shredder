@@ -88,9 +88,9 @@ class An_ingredient(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self,request,food_id,ingredient_id):
-        try:
+        # try:
             food = Food.objects.get(id=food_id)
-            nutrient_list=request.data['foodNutrients']
+            nutrient_list=request.data['ingredient']['foodNutrients']
             nutrients_to_add = []
             for nutrient in nutrient_list:
                 nutrient_measurement = Measurement(amount=nutrient['value'],unit_name=nutrient['unitName'])
@@ -98,15 +98,15 @@ class An_ingredient(APIView):
                 nutrient_description = Nutrient(name = nutrient['nutrientName'],measurement_id= nutrient_measurement)
                 nutrient_description.save()
                 nutrients_to_add.append(nutrient_description)
-            ingredient_measurement = Measurement(amount=request.data['servingSize'],unit_name=request.data['servingSizeUnit'])
+            ingredient_measurement = Measurement(amount=request.data['ingredient']['servingSize'],unit_name=request.data['ingredient']['servingSizeUnit'])
             ingredient_measurement.save()
-            ingredient = Ingredient(name=request.data['description'],food_id=food,measurement_id=ingredient_measurement)
+            ingredient = Ingredient(name=request.data['ingredient']['description'],food_id=food,measurement_id=ingredient_measurement)
             ingredient.save()
             ingredient.nutrients_id.set(nutrients_to_add)
             serialized_ingredient = IngredientSerializer(ingredient)
             return Response(serialized_ingredient.data,status=HTTP_201_CREATED)
-        except:
-            return Response(status=HTTP_400_BAD_REQUEST)
+        # except:
+        #     return Response(status=HTTP_400_BAD_REQUEST)
         
     def put(self,request,food_id,ingredient_id):
         try:
@@ -119,12 +119,11 @@ class An_ingredient(APIView):
             return Response(status=HTTP_400_BAD_REQUEST)
 
     def delete(self,request,food_id,ingredient_id):
-        try:
+        # try:
             a_food = Food.objects.get(id=food_id)
             ingredient = a_food.ingredients.get(id=ingredient_id)
-            ingredient.amount_consumed = request.data['amount']
-            ingredient.save()
+            ingredient.delete()
             return Response(status=HTTP_204_NO_CONTENT)
-        except:
-            return Response(status=HTTP_404_NOT_FOUND)
+        # except:
+        #     return Response(status=HTTP_404_NOT_FOUND)
 
