@@ -47,6 +47,12 @@ class A_Survey(APIView):
         )
         return Response(user_survey.data)
 
+    # User can delete survery response by survey id
+    def delete(self, request, id):
+        user_survey = get_object_or_404(Survey_response, user_id=request.user, id=id)
+        user_survey.delete()
+        return Response("Survey Deleted", status=HTTP_204_NO_CONTENT)
+
     # Allows users to update their survey response information and save it
     # def put(self, request):
     #     try:

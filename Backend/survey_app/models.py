@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 
 class Survey_response(models.Model):
     user_id = models.ForeignKey(
-        App_user, on_delete=models.CASCADE, related_name="survey_response"
+        App_user, on_delete=models.CASCADE, related_name="survey_responses"
     )
     height = models.BigIntegerField(
         null=False,
@@ -20,4 +20,4 @@ class Survey_response(models.Model):
     gender = models.CharField(null=False, validators=[v.MaxLengthValidator(6)])
     activity_level = models.CharField(null=False)
     dietary_restrictions = models.CharField(null=True)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True, blank=True, null=True)

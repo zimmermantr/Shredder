@@ -6,6 +6,7 @@ class SurveySerializer(serializers.ModelSerializer):
     class Meta:
         model = Survey_response
         fields = [
+            "id",
             "user_id",
             "height",
             "weight",
@@ -13,4 +14,5 @@ class SurveySerializer(serializers.ModelSerializer):
             "gender",
             "activity_level",
             "dietary_restrictions",
+            "created",
         ]

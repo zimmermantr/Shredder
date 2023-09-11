@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404, get_object_or_404
 from .models import App_user
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
@@ -13,6 +13,7 @@ from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
 )
 from django.http import HttpResponse
+from .serializers import UserSerializer
 
 
 class Register(APIView):
@@ -51,4 +52,5 @@ class Info(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        return Response({"email": request.user.email})
+        user = get_object_or_404(App_user, email=request.user.email)
+        return Response(UserSerializer(user).data)
