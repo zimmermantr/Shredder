@@ -3,6 +3,7 @@ import App from "./App";
 import Homepage from "./pages/Home/Homepage";
 import LogIn from "./pages/UserAuth/LogIn";
 import SignUp from "./pages/UserAuth/SignUp";
+import Survey from "./pages/Survey/Survey";
 
 export const router = createBrowserRouter([
 {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
             path: 'login',
             element: <LogIn />
         },
+        {
+            path: 'user_survey',
+            element: <Survey />
+        }
 
 
 
