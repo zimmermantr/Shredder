@@ -9,6 +9,7 @@ import { ExercisesPage } from "./pages/Fitness/ExercisesPage";
 import { WorkoutListsPage } from "./pages/Fitness/WorkoutListPage";
 import WorkoutPrograms from "./pages/Workout-Programs/WorkoutPrograms"
 import FullWorkoutProgram from "./pages/Workout-Programs/FullProgram";
+import MyPlan from "./pages/Workout-Programs/MyPlan";
 
 
 export const router = createBrowserRouter([
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
         {
             path: 'programs/:id/',
             element: <FullWorkoutProgram />
+        },
+        {
+            path: 'users/',
+            element: <MyPlan />
         }
     ]
 }
