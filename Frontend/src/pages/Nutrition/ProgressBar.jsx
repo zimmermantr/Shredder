@@ -10,29 +10,39 @@ export default function Progress (props){
     let calories = 0
     // 'Energy'
     mealList.map((meal)=>{
-        meal.ingredients.map((ingredient)=>{
-            ingredient.nutrients_id.map((nutrient)=>{
-                if (nutrient['name'] == 'Protein'){
-                    protein += (nutrient['measurement_id']['amount']* ingredient['amount_consumed'])
-
-                }
-                else if (nutrient['name'] == 'Carbohydrate, by difference'){
-                    carbs += (nutrient['measurement_id']['amount']* ingredient['amount_consumed'])
-                }
-                else if (nutrient['name'] == 'Total lipid (fat)'){
-                    fat += (nutrient['measurement_id']['amount']* ingredient['amount_consumed'])
-                }
-                else if (nutrient['name'] == 'Energy'){
-                    calories += (nutrient['measurement_id']['amount']* ingredient['amount_consumed'])
-                }
+        const today = new Date()
+        const todayDateString = today.toISOString().split('T')[0]
+        const itemDate = new Date(meal.created_at)
+        const itemDateString = itemDate.toISOString().split('T')[0]
+        if (itemDateString === todayDateString){
+            meal.ingredients.map((ingredient)=>{
+                ingredient.nutrients_id.map((nutrient)=>{
+                    if (nutrient['name'] == 'Protein'){
+                        protein += (nutrient['measurement_id']['amount']* ingredient['amount_consumed'])
+    
+                    }
+                    else if (nutrient['name'] == 'Carbohydrate, by difference'){
+                        carbs += (nutrient['measurement_id']['amount']* ingredient['amount_consumed'])
+                    }
+                    else if (nutrient['name'] == 'Total lipid (fat)'){
+                        fat += (nutrient['measurement_id']['amount']* ingredient['amount_consumed'])
+                    }
+                    else if (nutrient['name'] == 'Energy'){
+                        calories += (nutrient['measurement_id']['amount']* ingredient['amount_consumed'])
+                    }
+                })
             })
-        })
+
+        }
     })
-    return( <>  <h2>protein</h2>
+    return( <>  
+               calories
+                <ProgressBar striped variant={((calories/2000)*100) > 100?"danger":"info"} now={calories?((calories/2000)*100):null} label={`${Math.floor((calories/2000)*100)}%`} />
+               protein
                 <ProgressBar striped variant={(protein/(68/0.8))>1?"success": "danger"} now={((protein/(68/0.8))*100)} label={protein?`${Math.floor((protein/(68/0.8))*100)}%`:null} />
-                <h2>carbohydrates</h2>
+               carbohydrates
                 <ProgressBar striped variant={carbs > 300?"success":"danger"} now={(carbs/300)*100} label={`${Math.floor((carbs/300)*100)}%`} />
-                <h2>fat</h2>
+               fat
                 <ProgressBar striped variant={(((fat*9)/(calories*0.25))*100) > 100?"danger":"info"} now={fat?((fat*9)/(calories*0.25))*100:null} label={`${Math.floor((fat*9)/(calories*0.25)*100)}%`} />
     
             </>

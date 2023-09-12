@@ -6,7 +6,7 @@ import axios from "axios";
 
 export default function Nutrition(){
     const [mealList, setMealList] = useState([])
-    const [meal,setMeal] = useState([])
+    const [meal,setMeal] = useState(null)
     const [foodName,setFoodName] = useState("")
     const [foodData, setFoodData] = useState([])
     const [ingredient,setIngredient] = useState("")
@@ -18,7 +18,6 @@ export default function Nutrition(){
         axios.defaults.headers.common["Authorization"] = `Token ${token}`
         axios.get("http://127.0.0.1:8000/api/v1/nutrition/").then((response)=>{
             setMealList(response.data)
-            console.log(mealList)
         }).catch((error)=>{
             console.log(error)
         })
@@ -71,7 +70,6 @@ export default function Nutrition(){
                         </select>
                         <button onClick={addFood}>Start a Meal</button>
                     </div>
-                        console.log(mealList)
                     <div className="mealList">
                             {mealList.map((mealItem)=>{
                                 const today = new Date()
@@ -79,7 +77,6 @@ export default function Nutrition(){
                                 const itemDate = new Date(mealItem.created_at)
                                 const itemDateString = itemDate.toISOString().split('T')[0]
                                 if (itemDateString === todayDateString) {
-                                    console.log(mealItem.created_at)
                                     return <ul key={mealItem.id}>{mealItem.meal} <button onClick={async()=>{
                                         try{
                                             const token = localStorage.getItem("token")
@@ -92,7 +89,6 @@ export default function Nutrition(){
                                         setclick(!click)
                                     }}>delete meal</button>
                                 <NutritionEntry key={mealItem.id} mealItem={mealItem} mealList={mealList} setMealList={setMealList} meal={meal} setMeal={setMeal} foodName={foodName} setFoodName={setFoodName} foodData={foodData} addFood={addFood} setIngredient={setIngredient} ingredient={ingredient} setclick={setclick} click={click}/>
-                               {/* check this */}
                                 {mealItem.ingredients.map((ingredient)=>{
                                     return(<li key={ingredient.id}>
                                     {ingredient.name}, {ingredient.amount_consumed} <input type="text" placeholder="enter amount" onChange={(event)=>{setAmount(event.target.value)}} /> <button onClick={(async()=>{
