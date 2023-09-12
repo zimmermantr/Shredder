@@ -29,7 +29,7 @@ export const fitnessDropdown = [
     {
         id: 1,
         title: 'Programs',
-        path: '/',                      //// FIX
+        path: '/workout_programs/',                      //// FIX
         cName: 'submenu-item',
     },
     {
