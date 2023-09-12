@@ -9,10 +9,9 @@ import Nav from "../Nav/Nav";
 export const ExercisesPage = () => {
 
     const [muscleList, setMuscleList] = useState([])
-    const { apiKey, setAddedToWorkout } = useContext(userContext);
+    const { apiKey, setAddedToWorkout, workouts } = useContext(userContext);
     const { searchParameters = "" } = useParams(null);
     const navigate = useNavigate();
-    const {workouts} = useContext(userContext);
     const [offset, setOffset] = useState(0);
     const [error, setError] = useState();
     const [ searchInput, setSearchInput ] = useState("");
@@ -85,8 +84,9 @@ export const ExercisesPage = () => {
     ];
 
     return(
-        <div>
+        <div className="h-screen bg-[#1B1919] w-full ">
             <Nav />
+            <div className="h-auto bg-[#1B1919] w-full ">
             <div className="flex-grow mt-2">
                     <form onSubmit={onSubmitHandler} className="flex justify-left items-center mx-3">
                         <input type="text" placeholder="search" onChange={onChangeHandler} value={searchInput} list="muscle_groups" className="border rounded"/>
@@ -116,10 +116,10 @@ export const ExercisesPage = () => {
 
             {muscleList.length !== 0 && (
                 <div className="flex justify-center pb-3">
-            <button onClick={loadMoreExercises} className="bg-green-700 hover:bg-green-750 text-white py-1 px-4 rounded w-64">Load More</button>
+            <button onClick={loadMoreExercises} className="bg-purple-700 hover:bg-purple-800 text-white py-1 px-4 rounded w-64">Load More</button>
             </div>)
             }
-
+        </div>
         </div>
     )
 }
