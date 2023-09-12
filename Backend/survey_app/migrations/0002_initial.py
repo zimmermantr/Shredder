@@ -10,14 +10,14 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('nutrition_app', '0001_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('survey_app', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='food',
+            model_name='survey_response',
             name='user_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='foods', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='survey_responses', to=settings.AUTH_USER_MODEL),
         ),
     ]
