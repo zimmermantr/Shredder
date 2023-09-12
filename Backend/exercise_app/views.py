@@ -9,6 +9,7 @@ from rest_framework.status import (
 from .serializers import Exercise, User_Exercise ,ExerciseSerializer, UserExerciseSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
+from workout_app.models import Workout
 
 # Create your views here.
 
@@ -26,17 +27,19 @@ class All_exercises(User_permissions):
     #     )
     
     def get(self, request):
-        exercises = Exercise.objects.filter(created_by__in=[1,request.user.id]).order_by("pk")
+        exercises = Exercise.objects.filter(created_by__in=[request.user.id]).order_by("pk")
         return Response(
             ExerciseSerializer(
                 exercises, many=True,
             ).data
         )
 
-    def post(self, request):
+    def post(self, request, workout_id):
+        workout = get_object_or_404(request.user.custom_workouts, id=workout_id)
         new_exercise = Exercise(**request.data)
         new_exercise.created_by = request.user
         new_exercise.save()
+        new_exercise.workouts.add(workout)
         return Response(ExerciseSerializer(new_exercise).data, status=HTTP_201_CREATED)
 
 

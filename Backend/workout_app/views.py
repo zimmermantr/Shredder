@@ -17,7 +17,7 @@ class User_permissions(APIView):
 
 class All_workouts(User_permissions):
     def get(self, request):
-        workouts = Workout.objects.filter(created_by__in=[1,request.user.id]).order_by("pk")
+        workouts = Workout.objects.filter(created_by__in=[request.user.id]).order_by("pk")
         return Response(WorkoutSerializer(
                 workouts, many=True,
             ).data)
@@ -31,6 +31,7 @@ class All_workouts(User_permissions):
 class A_workout(User_permissions):
     def get(self, request, workout_id):
         workout = get_object_or_404(Workout, id=workout_id)
+        print(f'{request.user} is trying to access workouts')
         if workout.created_by.id not in [1,request.user.id]:
             return Response("not autorized", status=HTTP_400_BAD_REQUEST)
         return Response(WorkoutSerializer(workout).data)
@@ -52,5 +53,6 @@ class A_workout(User_permissions):
         if str(workout.created_by.id) != str(request.user.id):
             return Response("doesn't belong to user", status=HTTP_400_BAD_REQUEST)
         # Workout.objects.filter(id=workout_id).delete()
+        workout.exercises.all().delete()
         workout.delete()
         return Response(status=HTTP_204_NO_CONTENT)
