@@ -33,7 +33,7 @@ export default function Progress (props){
                 <h2>carbohydrates</h2>
                 <ProgressBar striped variant={carbs > 300?"success":"danger"} now={(carbs/300)*100} label={`${Math.floor((carbs/300)*100)}%`} />
                 <h2>fat</h2>
-                <ProgressBar striped variant={(((fat*9)/(calories*0.25))*100) > 25?"danger":"info"} now={fat?((fat*9)/(calories*0.25))*100:null} label={`${Math.floor((fat*9)/(calories*0.25)*100)}%`} />
+                <ProgressBar striped variant={(((fat*9)/(calories*0.25))*100) > 100?"danger":"info"} now={fat?((fat*9)/(calories*0.25))*100:null} label={`${Math.floor((fat*9)/(calories*0.25)*100)}%`} />
     
             </>
     )

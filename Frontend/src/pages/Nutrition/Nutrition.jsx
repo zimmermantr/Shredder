@@ -57,9 +57,9 @@ export default function Nutrition(){
                     <div className="resultsContainer">
                         <Progress mealList={mealList} />
                     </div>
-                <h2>TODAY I ATE</h2>
-                <div className="nutrition-entry">
                 </div>
+                <div className="nutrition-entry">
+                    <h2>TODAY I ATE</h2>
                     <div>
                         <select name="" id="" onChange={(e)=>{setMeal(e.target.value)
                         console.log(meal)}}>
@@ -71,20 +71,26 @@ export default function Nutrition(){
                         </select>
                         <button onClick={addFood}>Start a Meal</button>
                     </div>
-            
+                        console.log(mealList)
                     <div className="mealList">
                             {mealList.map((mealItem)=>{
-                                return <ul key={mealItem.id}>{mealItem.meal} <button onClick={async()=>{
-                                    try{
-                                        const token = localStorage.getItem("token")
-                                        axios.defaults.headers.common["Authorization"] = `Token ${token}`
-                                        const response =  await axios.delete(`http://127.0.0.1:8000/api/v1/nutrition/${mealItem.id}/`)
-                                        console.log(response)
-                                    }catch(error){
-                                        console.log(error)
-                                    }
-                                    setclick(!click)
-                                }}>delete meal</button>
+                                const today = new Date()
+                                const todayDateString = today.toISOString().split('T')[0]
+                                const itemDate = new Date(mealItem.created_at)
+                                const itemDateString = itemDate.toISOString().split('T')[0]
+                                if (itemDateString === todayDateString) {
+                                    console.log(mealItem.created_at)
+                                    return <ul key={mealItem.id}>{mealItem.meal} <button onClick={async()=>{
+                                        try{
+                                            const token = localStorage.getItem("token")
+                                            axios.defaults.headers.common["Authorization"] = `Token ${token}`
+                                            const response =  await axios.delete(`http://127.0.0.1:8000/api/v1/nutrition/${mealItem.id}/`)
+                                            console.log(response)
+                                        }catch(error){
+                                            console.log(error)
+                                        }
+                                        setclick(!click)
+                                    }}>delete meal</button>
                                 <NutritionEntry key={mealItem.id} mealItem={mealItem} mealList={mealList} setMealList={setMealList} meal={meal} setMeal={setMeal} foodName={foodName} setFoodName={setFoodName} foodData={foodData} addFood={addFood} setIngredient={setIngredient} ingredient={ingredient} setclick={setclick} click={click}/>
                                {/* check this */}
                                 {mealItem.ingredients.map((ingredient)=>{
@@ -101,24 +107,50 @@ export default function Nutrition(){
                                         setclick(!click)
                                     })}>add amount</button>
                                      <button onClick={async()=>{
-                                        try{
-                                            const token = localStorage.getItem("token")
-                                            axios.defaults.headers.common["Authorization"] = `Token ${token}`
-                                            const response =  await axios.delete(`http://127.0.0.1:8000/api/v1/nutrition/${mealItem.id}/ingredient/${ingredient.id}/`)
-                                            console.log(response)
-                                        }catch(error){
-                                            console.log(error)
-                                        }
-                                        setclick(!click)
-                                    }}>delete</button>
+                                         try{
+                                             const token = localStorage.getItem("token")
+                                             axios.defaults.headers.common["Authorization"] = `Token ${token}`
+                                             const response =  await axios.delete(`http://127.0.0.1:8000/api/v1/nutrition/${mealItem.id}/ingredient/${ingredient.id}/`)
+                                             console.log(response)
+                                            }catch(error){
+                                                console.log(error)
+                                            }
+                                            setclick(!click)
+                                        }}>delete</button>
                                     </li>)
 
-                                })}
+})}
                             </ul>
+                        }
                             })}
-                    </div>
+                            </div>
+                            </div>
+                            
 
-                </div>
 
         </div>
 }
+
+
+
+// const today = new Date(); // Current date and time
+// const todayDateString = today.toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+
+// const filteredItems = items.map((item) => {
+//   // Parse the item's created_at date
+//   const itemDate = new Date(item.created_at);
+  
+//   // Get the item's date in YYYY-MM-DD format
+//   const itemDateString = itemDate.toISOString().split('T')[0];
+  
+//   // Check if the item's date matches today's date
+//   if (itemDateString === todayDateString) {
+//     // If it matches, return the item
+//     return item;
+//   }
+  
+//   // If it doesn't match, return null (or you can omit it)
+//   return null;
+// }).filter((item) => item !== null); // Filter out the null items
+
+// console.log(filteredItems); // Contains items with today's date
