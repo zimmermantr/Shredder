@@ -5,7 +5,7 @@ import { userContext } from "../../App";
 import axios from "axios";
 import { api } from "../../Api";
 import ExerciseCard from "./ExerciseCard";
-import FitNav from "./FitNav";
+import Nav from "../Nav/Nav";
 
 export const WorkoutListsPage = () => {
     const {workouts, setWorkouts, fetchWorkouts, user} = useContext(userContext);
@@ -40,7 +40,7 @@ export const WorkoutListsPage = () => {
 
     return (
         <div>
-            <FitNav />
+            <Nav />
             <form className="m-3">
                 <input className="border rounded mr-2"
                     type="text"

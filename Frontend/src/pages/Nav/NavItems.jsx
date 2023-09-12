@@ -35,15 +35,15 @@ export const fitnessDropdown = [
     {
         id: 2,
         title: 'Excercises',
-        path: "exercises/:searchParameters",                //// FIX
+        path: "/exercises/:searchParameters",                //// FIX
         cName: 'submenu-item',
     },
-    // {
-    //     id: 3,
-    //     title: '',
-    //     path: '/',
-    //     cName: 'nav-item',
-    // },
+    {
+        id: 3,
+        title: 'User Workouts',
+        path: '/workouts',
+        cName: 'submenu-item',
+    },
 ]
 
 export const nutritionDropdown = [
