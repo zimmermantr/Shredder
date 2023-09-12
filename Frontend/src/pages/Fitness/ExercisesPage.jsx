@@ -4,17 +4,18 @@ import { userContext } from "../../App";
 import { useParams, useNavigate } from "react-router-dom";
 import ExerciseCard from "./ExerciseCard";
 import './fitnessStyle.css'
-import FitNav from "./FitNav";
+import Nav from "../Nav/Nav";
 
 export const ExercisesPage = () => {
 
     const [muscleList, setMuscleList] = useState([])
-    const { apiKey } = useContext(userContext);
+    const { apiKey, setAddedToWorkout } = useContext(userContext);
     const { searchParameters = "" } = useParams(null);
     const navigate = useNavigate();
     const {workouts} = useContext(userContext);
     const [offset, setOffset] = useState(0);
     const [error, setError] = useState();
+    const [ searchInput, setSearchInput ] = useState("");
 
     useEffect(() => {
         setOffset(0);
@@ -28,6 +29,7 @@ export const ExercisesPage = () => {
                 navigate("/exercises/:searchParameters")
             }else{
             setMuscleList(response.data)
+            // searchParameters = ""
             }
         })
         .catch((error) => {
@@ -52,10 +54,50 @@ export const ExercisesPage = () => {
         });
     };
 
+    const onSubmitHandler = (event) => {
+        event.preventDefault();
+        setSearchInput("");
+        navigate(`/exercises/${searchInput}`);
+        setAddedToWorkout(false);
+    };
+
+    const onChangeHandler =(event) => {
+        setSearchInput(event.target.value);
+    };
+
+    const availableMuscleGroups = [
+        "abdominals",
+        "abductors",
+        "adductors",
+        "biceps",
+        "calves",
+        "chest",
+        "forearms",
+        "glutes",
+        "hamstrings",
+        "lats",
+        "lower_back",
+        "middle_back",
+        "neck",
+        "quadriceps",
+        "traps",
+        "triceps",
+    ];
 
     return(
         <div>
-            <FitNav />
+            <Nav />
+            <div className="flex-grow mt-2">
+                    <form onSubmit={onSubmitHandler} className="flex justify-left items-center mx-3">
+                        <input type="text" placeholder="search" onChange={onChangeHandler} value={searchInput} list="muscle_groups" className="border rounded"/>
+                        <datalist id="muscle_groups">
+                            {availableMuscleGroups.map((muscleGroup) => (
+                            <option key={muscleGroup} value={muscleGroup} />
+                            ))}
+                        </datalist>
+                        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-4 rounded">Search</button>
+                    </form>
+                </div>
             <ol>
                 {muscleList.map((lift,index) => (
                     
@@ -71,9 +113,12 @@ export const ExercisesPage = () => {
                 ))}
             
             </ol>
-            <div className="flex justify-center pb-3">
+
+            {muscleList.length !== 0 && (
+                <div className="flex justify-center pb-3">
             <button onClick={loadMoreExercises} className="bg-green-700 hover:bg-green-750 text-white py-1 px-4 rounded w-64">Load More</button>
-            </div>
+            </div>)
+            }
 
         </div>
     )

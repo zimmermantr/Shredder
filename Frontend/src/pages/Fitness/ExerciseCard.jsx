@@ -33,7 +33,7 @@ export default function ExerciseCard(props){
         <div className="bg-slate-400 border-2 p-5 m-5">
             
             <p className="font-bold underline pb-3">{props.exercise_name} </p>
-            <li>Targeted muscle: {props.targeted_muscles}</li>
+            <li>Targeted muscle: {props.primary_muscle}</li>
             <li>Equipment needed: {props.equipment} </li>
             <li>Difficulty rating: {props.difficulty} </li>
             <div className={`instructions ${expanded ? "block" : "truncate"} mt-2`}>
