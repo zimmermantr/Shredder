@@ -6,13 +6,19 @@ import { InchToCm, KcalPerKg, LbsToKg, ProteinReq, BMI } from '../Calculators';
 
 
 const CalcHp = styled.div`
-
-
-height: 40rem;
-
+margin: 4rem 2rem;
+padding-bottom: 4rem;
 display: flex;
 flex-direction: row;
 justify-content: space-evenly;
+
+
+@media screen and (max-width:  1025px){
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+
+}
 
 `
 const CalcHpLeft = styled.div`
@@ -32,15 +38,20 @@ color: whitesmoke;
 const CalcHpRPhone = styled.div`
 background-image: url('/phone2.png');
 background-repeat: no-repeat;
-background-size: contain;
+background-size: cover;
 background-position: center;
 
-width: 20rem;
+padding:3rem;
 
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+
+@media screen and (max-width:  1025px){
+    margin: 2rem;
+}
+
 
 `;
 
@@ -53,7 +64,7 @@ width: 13.5rem;
 
 display: flex;
 flex-direction: column;
-
+justify-content: center;
 align-items: center;
 
 `
@@ -63,6 +74,10 @@ margin-top: 1rem;
 color: whitesmoke;
 text-align: center;
 text-wrap: balance;
+`
+const CalcP = styled.h6`
+padding:1rem;
+
 `
 
 const CalcPrev = ({title, text,    }) => {
@@ -95,7 +110,7 @@ const CalcPrev = ({title, text,    }) => {
 
                 <CalcHpLeft>
                     <h2>{title}</h2>
-                    <p>{text}</p>
+                    <CalcP>{text}</CalcP>
 
 
 

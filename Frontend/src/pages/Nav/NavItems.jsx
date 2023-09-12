@@ -29,28 +29,28 @@ export const fitnessDropdown = [
     {
         id: 1,
         title: 'Programs',
-        path: '/',                      //// FIX
+        path: '/workout_programs/',                      //// FIX
         cName: 'submenu-item',
     },
     {
         id: 2,
         title: 'Excercises',
-        path: '/',                      //// FIX
+        path: "/exercises/:searchParameters",                //// FIX
         cName: 'submenu-item',
     },
-    // {
-    //     id: 3,
-    //     title: '',
-    //     path: '/',
-    //     cName: 'nav-item',
-    // },
+    {
+        id: 3,
+        title: 'User Workouts',
+        path: '/workouts',
+        cName: 'submenu-item',
+    },
 ]
 
 export const nutritionDropdown = [
     {
         id: 1,
         title: 'Dashboard',
-        path: '/',                      //// FIX
+        path: 'nutrition',                      //// FIX
         cName: 'submenu-item',
     },
     {

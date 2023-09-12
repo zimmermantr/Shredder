@@ -15,7 +15,7 @@ class Workout(models.Model):
     # )
     exercises = models.ManyToManyField(Exercise, related_name="workouts", blank=True)
 
-    created_by = models.ForeignKey(App_user, on_delete=models.CASCADE, blank=True, null=True)
+    created_by = models.ForeignKey(App_user, on_delete=models.CASCADE, blank=True, null=True, related_name="custom_workouts")
 
 
 class User_Workout(models.Model):
