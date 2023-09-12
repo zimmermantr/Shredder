@@ -71,7 +71,7 @@ export const userDropdown = [
     {
         id: 2,
         title: 'My Plan',
-        path: '/',                      //// FIX
+        path: '/users/',                      //// FIX
         cName: 'submenu-item',
     },
 ]
