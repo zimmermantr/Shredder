@@ -29,21 +29,21 @@ export const fitnessDropdown = [
     {
         id: 1,
         title: 'Programs',
-        path: '/',                      //// FIX
+        path: '/workout_programs/',                      //// FIX
         cName: 'submenu-item',
     },
     {
         id: 2,
         title: 'Excercises',
-        path: '/',                      //// FIX
+        path: "/exercises/:searchParameters",                //// FIX
         cName: 'submenu-item',
     },
-    // {
-    //     id: 3,
-    //     title: '',
-    //     path: '/',
-    //     cName: 'nav-item',
-    // },
+    {
+        id: 3,
+        title: 'User Workouts',
+        path: '/workouts',
+        cName: 'submenu-item',
+    },
 ]
 
 export const nutritionDropdown = [
@@ -71,7 +71,7 @@ export const userDropdown = [
     {
         id: 2,
         title: 'My Plan',
-        path: '/',                      //// FIX
+        path: '/users/',                      //// FIX
         cName: 'submenu-item',
     },
 ]

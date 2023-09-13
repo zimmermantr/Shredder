@@ -6,6 +6,11 @@ import LogIn from "./pages/UserAuth/LogIn";
 import SignUp from "./pages/UserAuth/SignUp";
 import Survey from "./pages/Survey/Survey";
 import UserInfo from "./pages/UserPage/UserInfo";
+import { ExercisesPage } from "./pages/Fitness/ExercisesPage";
+import { WorkoutListsPage } from "./pages/Fitness/WorkoutListPage";
+import WorkoutPrograms from "./pages/Workout-Programs/WorkoutPrograms"
+import FullWorkoutProgram from "./pages/Workout-Programs/FullProgram";
+import MyPlan from "./pages/Workout-Programs/MyPlan";
 
 
 export const router = createBrowserRouter([
@@ -18,12 +23,10 @@ export const router = createBrowserRouter([
             element: <Homepage />
         },
         {
-
             path: "nutrition",
             element: <Nutrition />
         },
         {
-
             path: 'signup',
             element: <SignUp />
         },
@@ -36,13 +39,30 @@ export const router = createBrowserRouter([
             element: <Survey />
         },
         {
+
             path: 'user/info/',
             element: <UserInfo />
+        },
+        {
+            path: "exercises/:searchParameters",
+            element: <ExercisesPage />
+        },
+        {
+            path: "workouts",
+            element: <WorkoutListsPage />
+        },
+        {
+            path: 'workout_programs',
+            element: <WorkoutPrograms />
+        },
+        {
+            path: 'programs/:id/',
+            element: <FullWorkoutProgram />
+        },
+        {
+            path: 'users/',
+            element: <MyPlan />
         }
-
-
-
-        
     ]
 }
 
