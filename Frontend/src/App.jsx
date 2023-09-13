@@ -81,13 +81,13 @@ function App() {
 
   useEffect(()=> {
     validUser()
-    setWorkouts([])
+    // setWorkouts([])
     fetchWorkouts()
   }, []);
 
 
   return (
-    <userContext.Provider value={{user, setUser, workouts, workout, addExercise, deleteExercise, setAddedToWorkout, apiKey, fetchWorkouts, deleteWorkout }}>
+    <userContext.Provider value={{user, setUser, workouts, workout, addExercise, deleteExercise, setAddedToWorkout, apiKey, fetchWorkouts, deleteWorkout, addedToWorkout }}>
       <Outlet />
     </userContext.Provider>
   )
