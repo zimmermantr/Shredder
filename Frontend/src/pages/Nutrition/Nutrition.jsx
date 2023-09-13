@@ -1,4 +1,5 @@
 import "./NutritionStyle.css"
+import Nav from "../Nav/Nav";
 import NutritionEntry from "./NutritionEntry";
 import Progress from "./ProgressBar";
 import { useState,useEffect } from "react"
@@ -42,23 +43,19 @@ export default function Nutrition(){
         setclick(!click)
     }
 
-    return <div className="nutrition-page">
-                <div className="userInfo">
-                    <h2>
-                    USER Info
-                    </h2>
-                    <div className="img">   
-                        img
-                    </div>
-                </div>
-                <div className="results">
-                    Results
+    return( 
+            <div>
+            <Nav />
+                
+            <div className="nutrition-page">
+                <div className="results nutrition-page-text">
                     <div className="resultsContainer">
+                    <h2 className="nutrition-page-text">Results</h2>
                         <Progress mealList={mealList} />
                     </div>
                 </div>
                 <div className="nutrition-entry">
-                    <h2>TODAY I ATE</h2>
+                    <h2 className="nutrition-page-text">Today I Ate</h2>
                     <div>
                         <select name="" id="" onChange={(e)=>{setMeal(e.target.value)
                         console.log(meal)}}>
@@ -77,7 +74,7 @@ export default function Nutrition(){
                                 const itemDate = new Date(mealItem.created_at)
                                 const itemDateString = itemDate.toISOString().split('T')[0]
                                 if (itemDateString === todayDateString) {
-                                    return <ul key={mealItem.id}>{mealItem.meal} <button onClick={async()=>{
+                                    return <ul key={mealItem.id}> <h2 className="nutrition-page-text-meal">{mealItem.meal}</h2> <button onClick={async()=>{
                                         try{
                                             const token = localStorage.getItem("token")
                                             axios.defaults.headers.common["Authorization"] = `Token ${token}`
@@ -91,7 +88,7 @@ export default function Nutrition(){
                                 <NutritionEntry key={mealItem.id} mealItem={mealItem} mealList={mealList} setMealList={setMealList} meal={meal} setMeal={setMeal} foodName={foodName} setFoodName={setFoodName} foodData={foodData} addFood={addFood} setIngredient={setIngredient} ingredient={ingredient} setclick={setclick} click={click}/>
                                 {mealItem.ingredients.map((ingredient)=>{
                                     return(<li key={ingredient.id}>
-                                    {ingredient.name}, {ingredient.amount_consumed} <input type="text" placeholder="enter amount" onChange={(event)=>{setAmount(event.target.value)}} /> <button onClick={(async()=>{
+                                    <h2 className="nutrition-page-text">{ingredient.name}, {ingredient.amount_consumed}</h2> <input type="text" placeholder="enter amount" onChange={(event)=>{setAmount(event.target.value)}} /> <button onClick={(async()=>{
                                         try{
                                             const token = localStorage.getItem("token")
                                             axios.defaults.headers.common["Authorization"] = `Token ${token}`
@@ -125,7 +122,12 @@ export default function Nutrition(){
 
 
         </div>
+                
+                
+            </div>
+    )
 }
+
 
 
 
