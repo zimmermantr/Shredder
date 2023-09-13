@@ -3,7 +3,7 @@ import axios from "axios";
 import { userContext } from "../../App";
 import { useParams, useNavigate } from "react-router-dom";
 import ExerciseCard from "./ExerciseCard";
-import './fitnessStyle.css'
+// import './fitnessStyle.css'
 import Nav from "../Nav/Nav";
 
 export const ExercisesPage = () => {
