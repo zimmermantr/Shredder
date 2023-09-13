@@ -79,6 +79,9 @@ const CalcP = styled.h6`
 padding:1rem;
 
 `
+const CalcInput = styled.input`
+    color: purple;
+`
 
 const CalcPrev = ({title, text,    }) => {
     const [dropBtnTitle, setDropBtnTitle] = useState('Calculations');
@@ -124,12 +127,12 @@ const CalcPrev = ({title, text,    }) => {
                     </DropdownButton>
 
                     {calc === 2 ?
-                    <input type="text" placeholder='height in inches' 
+                    <CalcInput type="text" placeholder='height in inches' 
                     onChange={(e)=> setHeight(e.target.value)}/>
                     : ''}
 
                     {calc > 0 ?
-                    <input type="text" placeholder='weight in pounds' 
+                    <CalcInput type="text" placeholder='weight in pounds' 
                     onChange={(e)=> setWeight(e.target.value)} />
                     : ''}
 
@@ -142,7 +145,7 @@ const CalcPrev = ({title, text,    }) => {
                         </InnerPhoneH2>
                         <InnerPhoneH2>
                             {calc === 1 ? (weight && `${Math.floor(ProteinReq(0.8,LbsToKg(weight)))}g of protein`)
-                            : calc === 2 ? (height && weight && `${BMI(InchToCm(height),LbsToKg(weight))} BMI`)
+                            : calc === 2 ? (height && weight && `${(BMI(InchToCm(height),LbsToKg(weight)).toFixed(2))} BMI`)
                             : calc === 3 ? (weight && `${Math.floor(KcalPerKg(25,LbsToKg(weight)))} calories/day`)
                             : ''}
                         </InnerPhoneH2>

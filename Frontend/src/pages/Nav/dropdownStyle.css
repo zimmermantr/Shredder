@@ -1,9 +1,9 @@
 .fitness-submenu {
     /* display:none; */
-    width: 9rem;
+    width: 7.5rem;
     position: absolute;
     top: 4rem;
-    transform: translateX(-1.5rem);
+    /* transform: translateX(-1.5rem); */
     list-style: none;
     text-align: left;
     
@@ -40,10 +40,10 @@
 
 /* Nutrition */
 .nutrition-submenu {
-    width: 9rem;
+    width: 8rem;
     position: absolute;
     top: 4rem;
-    transform: translateX(-1.5rem);
+    /* transform: translateX(-1.5rem); */
     list-style: none;
     text-align: start;
     
@@ -67,10 +67,10 @@
 
 /* My Plan */
 .user-submenu {
-    width: 9rem;
+    width: 7.8rem;
     position: absolute;
     top: 4rem;
-    transform: translateX(-1.5rem);
+    /* transform: translateX(-1.5rem); */
     list-style: none;
     text-align: start;
     

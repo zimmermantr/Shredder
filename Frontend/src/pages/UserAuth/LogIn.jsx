@@ -30,8 +30,8 @@ height: 30rem;
 width: 30rem;
 margin-left: 5rem;
 
-background: #3f434a70;
-box-shadow: 10px 10px 10px 1px #1f2021;
+background: #100e0eb2;
+box-shadow: 10px 10px 10px 1px #1f202190;
 border-radius: 2rem;
 
 display:flex;
@@ -44,9 +44,11 @@ color: white;
 `;
 
 const Lih2 = styled.h2`
-padding-top:2rem;
-padding-bottom: 0.5rem;
-text-shadow: #23272e 10px 10px 8px;
+padding:2rem;
+text-shadow: #000 1px 0px 4px;
+font-size: 2rem;
+
+margin-top: 4rem;
 `;
 
 const Lih5 = styled.h5`
@@ -63,13 +65,49 @@ margin-bottom: 2rem;
 `;
 
 const LiBtn = styled.button`
-background: grey;
 border: none;
-border-radius: 2rem;
-color: white;
-margin: 1.5rem 0rem;
+    background: transparent;
+    padding: 4px 16px;
+    font-size: 1.1rem;
+    color: white;
+    background: rgba(199, 118, 246, 0.719);   /* rgb(0,212,212) */
+    border-radius: 5px;
+    transition: 0.2s all ease-out;
+    cursor: pointer;
+
+    margin-top: 1.6rem;
+    margin-bottom: 15px;
+    
+    &:hover {
+        border: #c776f6b7 1px solid;
+        box-shadow: 1px 5px 30px 1px #e8c0ffb7;
+        background: whitesmoke;
+        color: purple;
+    }
 `;
 
+const LIInput = styled.input`
+    color: purple;
+`
+
+const LIForm = styled.form`
+    // background: white;
+    display: flex;
+    flex-direction: column;
+    width:  60%;
+`
+
+const LILink = styled(Link)`
+    padding-left: 5px;
+    color: skyblue;
+
+    &:hover {
+        
+        text-shadow: skyblue 0px 0px 10px;
+        
+        color: white;
+    }
+`
 
 export default function LogIn() {
     const {setUser} = useContext(userContext);
@@ -107,19 +145,21 @@ export default function LogIn() {
                     </Lih2>
                     
                     <Lih6>New user?
-                        <Link to='/signup'>Sign up</Link>
+                        <LILink to='/signup'>Sign up</LILink>
                     </Lih6>
 
-                    <Lih5>Email</Lih5>
-                    <input type="text" placeholder='shredder@ripped.com' onChange={(e) => setEmail(e.target.value)}/>
+                    <LIForm onSubmit={(e) => userLogIn(e)}>
 
-                    <Lih5>Password</Lih5>
-                    <input type="text" placeholder='*******' onChange={(e) => setPassword(e.target.value)}/>
 
-                    <LiBtn
-                    onClick={(e) => userLogIn(e)}
-                    >Log In</LiBtn>
+                        <Lih5>Email</Lih5>
+                        <LIInput type="text" placeholder='shredder@ripped.com' required onChange={(e) => setEmail(e.target.value)}/>
 
+                        <Lih5>Password</Lih5>
+                        <LIInput type="password" placeholder='*******' required onChange={(e) => setPassword(e.target.value)}/>
+
+                        <LiBtn>Log In</LiBtn>
+
+                    </LIForm>
 
                 </LiBox>
 

@@ -117,18 +117,9 @@ export default function Survey() {
     const [equipment, setEquipment] = useState('')
     const navigate = useNavigate()
     
-    const {user} = useContext(userContext)
+    const {user, validUser} = useContext(userContext)
     
     useEffect(()=> {
-
-        const validUser = async() => {
-          let token = localStorage.getItem('token');
-          if (token){
-            api.defaults.headers.common["Authorization"] = `Token ${token}`;
-            let response = await api.get('users/');
-            setUser(response.data);
-          }
-        };
         validUser();
       }, []);
     
@@ -160,12 +151,12 @@ export default function Survey() {
     return (
         <>
             <Sbackground>
-                
                 <Ssideborder>
                     Shred The Competiton
                 </Ssideborder>
                 
                 <Smid>
+                {user && <h6 style={{fontSize:'.4rem'}}>{user.id}</h6>}
                 
                 <Sh1>Please Fill Out The Form Below</Sh1>
                 
