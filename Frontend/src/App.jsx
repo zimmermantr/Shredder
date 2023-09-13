@@ -86,6 +86,7 @@ function App() {
   }, []);
 
 
+
   return (
     <userContext.Provider value={{user, setUser, workouts, workout, addExercise, deleteExercise, setAddedToWorkout, apiKey, fetchWorkouts, deleteWorkout, addedToWorkout }}>
       <Outlet />

@@ -65,7 +65,7 @@ export const userDropdown = [
     {
         id: 1,
         title: 'My Info',
-        path: '/',                      //// FIX
+        path: '/user/info',                      
         cName: 'submenu-item',
     },
     {

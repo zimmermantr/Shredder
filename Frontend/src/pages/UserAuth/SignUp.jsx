@@ -94,7 +94,7 @@ export default function SignUp() {
         setUser(user)
         localStorage.setItem('token', token);
         api.defaults.headers.common["Authorization"] = `Token ${token}`
-        navigate('/')
+        navigate('/user/survey/')
     }
 
 
