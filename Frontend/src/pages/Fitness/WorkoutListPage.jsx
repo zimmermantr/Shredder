@@ -39,8 +39,9 @@ export const WorkoutListsPage = () => {
 
 
     return (
-        <div>
+        <div className="bg-[#1B1919] ">
             <Nav />
+            <div className="bg-[#1B1919]">
             <form className="m-3">
                 <input className="border rounded mr-2"
                     type="text"
@@ -61,7 +62,7 @@ export const WorkoutListsPage = () => {
                 
                 <WorkoutCard key={workout.id} workout={workout} />
             ))}
+            </div>
         </div>
     );
 };
-

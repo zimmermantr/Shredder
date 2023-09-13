@@ -30,7 +30,7 @@ export default function ExerciseCard(props){
     };
 
     return (
-        <div className="bg-slate-400 border-2 p-5 m-5">
+        <div className="bg-slate-400 border-2 p-5 m-5 ">
             
             <p className="font-bold underline pb-3">{props.exercise_name} </p>
             <li>Targeted muscle: {props.primary_muscle}</li>
