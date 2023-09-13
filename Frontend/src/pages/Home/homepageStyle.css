@@ -8,7 +8,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    border: 1px solid black;
+    
     height: 30rem;
 
     display: flex;
@@ -30,7 +30,16 @@
     color: whitesmoke;
     text-align: center;
     text-shadow: 1px 1px 10px rgb(109, 109, 109);
-    /* padding: 4rem; */
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+.homeText h2 {
+    color: whitesmoke;
+    text-align: center;
+    text-shadow: 1px 1px 10px rgb(109, 109, 109);
+    padding: 1rem;
+    font-size: 2rem;
 }
 
 .homeText p {
@@ -80,8 +89,6 @@
 /* Features containers */
 
 .features {
-    border: black 1px solid;
-    border-radius: 2rem;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
