@@ -81,20 +81,27 @@ export const Nav = () => {
                                 );
                             } else if (item.title === 'My Plan'){     //if hover over My Plan link
                                 return (
-                                    <li 
-                                    key={item.id} 
-                                    className={item.cName}
-                                    onMouseEnter={handleMyPlanMouseEnter}
-                                    onMouseLeave={handleMouseLeave}
-                                    >
+                                    <>
+                                    
+                                        <li 
+                                        key={item.id} 
+                                        className={item.cName}
+                                        onMouseEnter={handleMyPlanMouseEnter}
+                                        onMouseLeave={handleMouseLeave}
+                                        >
                                         <Link className='link' to={item.path}>
-                                            {item.title}
+                                        {item.title}
                                         </Link>
-                                        {myPlanDropdown && <Dropdown name='user' items={userDropdown} />}
+                                         
+                                        {user && myPlanDropdown && <Dropdown name='user' items={userDropdown} />}
+                                    
                                         |
-                                    </li>
+                                        </li>
+
+                                    </>
                                 );
-                            } else {
+                            } 
+                            else {
                             return (
                                 <li key={item.id} className={item.cName}>
                                     <Link className='link' to={item.path}>{item.title}</Link>

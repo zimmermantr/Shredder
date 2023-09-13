@@ -5,6 +5,7 @@ import Nutrition from "./pages/Nutrition/Nutrition";
 import LogIn from "./pages/UserAuth/LogIn";
 import SignUp from "./pages/UserAuth/SignUp";
 import Survey from "./pages/Survey/Survey";
+import UserInfo from "./pages/UserPage/UserInfo";
 
 
 export const router = createBrowserRouter([
@@ -31,8 +32,12 @@ export const router = createBrowserRouter([
             element: <LogIn />
         },
         {
-            path: 'user_survey',
+            path: 'user/survey/',
             element: <Survey />
+        },
+        {
+            path: 'user/info/',
+            element: <UserInfo />
         }
 
 

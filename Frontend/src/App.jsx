@@ -12,18 +12,25 @@ export const userContext = createContext();
 function App() {
   const [user, setUser] = useState(null);
 
-  const validUser = async() => {
-    let token = localStorage.getItem('token');
-    if (token){
-      api.defaults.headers.common["Authorization"] = `Token ${token}`;
-      let response = await api.get('users/');
-      setUser(response.data);
-    }
-  }
 
   useEffect(()=> {
-    validUser()
+
+    const validUser = async() => {
+      let token = localStorage.getItem('token');
+      if (token){
+        api.defaults.headers.common["Authorization"] = `Token ${token}`;
+        let response = await api.get('users/');
+        setUser(response.data);
+      }
+    };
+    validUser();
   }, []);
+
+  useEffect(()=> {
+    console.log({user})
+  }, [user]);
+
+  
 
   return (
     <userContext.Provider value={{user, setUser }}>

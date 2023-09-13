@@ -4,9 +4,14 @@ import Features from "./features/Features";
 import JoinNow from "./features/JoinNow";
 import CalcPrev from "./CalcPrev";
 // Frontend/src/pages/Home/homepageStyle.css
+import { useEffect, useContext } from "react";
+import { userContext } from "../../App";
+
 export const Homepage = () => {
-
-
+    const {user} = useContext(userContext)
+    useEffect(()=>{
+        console.log(user)
+      },[])
     return (
         <>
                 <Nav />
