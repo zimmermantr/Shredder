@@ -14,7 +14,7 @@ export const navItems = [
     {
         id: 3,
         title: 'Nutrition',
-        path: 'nutrition',                     
+        path: '/',                     
         cName: 'nav-item',
     },
     {
@@ -50,7 +50,7 @@ export const nutritionDropdown = [
     {
         id: 1,
         title: 'Dashboard',
-        path: 'nutrition',                      
+        path: '/nutrition',                      
         cName: 'submenu-item',
     },
     {
