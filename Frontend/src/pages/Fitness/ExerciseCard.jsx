@@ -1,16 +1,28 @@
 import { useState, useContext, useEffect } from "react";
 import { userContext } from "../../App";
 import { useLocation } from "react-router-dom";
+import { api } from "../../Api";
 
 export default function ExerciseCard(props){
     const [ expanded, setExpanded ] = useState(false);
-    const { addExercise, workout, deleteExercise,addedToWorkout, setAddedToWorkout } = useContext(userContext);
-    const isOnWorkout = workout.find((exercise) => exercise.exercise_name === props.exercise_name);
+    const { addExercise, workout, deleteExercise, addedToWorkout, setAddedToWorkout, workouts } = useContext(userContext);
+    const [isExerciseOnWorkout, setIsExerciseOnWorkout] = useState(false);
     const [selectedWorkout, setSelectedWorkout] = useState(null);
     const location = useLocation();
     const isOnExercisesPage = location.pathname.includes("/exercises");
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+    const [showFailMessage, setShowFailMessage] = useState(false);
+    const [newSets, setNewSets] = useState("")
+    const [newReps, setNewReps] = useState("")
 
-
+    const handleSelectedWorkoutChange = (e) => {
+        const selectedValue = e.target.value;
+        const selectedWorkoutName = e.target.options[e.target.selectedIndex].getAttribute('data-workout-name');
+        setSelectedWorkout(selectedValue);
+        let tempWorkout = workouts.find(o => o.workout_name === selectedWorkoutName)
+        let tempExercise = tempWorkout.exercises.some(o => o.exercise_name === props.exercise_name)
+        setIsExerciseOnWorkout(tempExercise)
+    };
 
     const toggleExpand = () => {
         setExpanded(!expanded);
@@ -25,43 +37,109 @@ export default function ExerciseCard(props){
             ...props
         };
         delete exerciseToAdd.availableWorkouts;
-        addExercise(exerciseToAdd, selectedWorkout);
-        setAddedToWorkout(true);
+        if(!isExerciseOnWorkout){
+            addExercise(exerciseToAdd, selectedWorkout);
+            setAddedToWorkout(true);
+            setIsExerciseOnWorkout(true);
+            setShowSuccessMessage(true);
+            setTimeout(() => {
+            setShowSuccessMessage(false);
+            }, 2000);
+        }else{
+            alert("You already have this exercise on that workout");
+            setShowFailMessage(true);
+            setTimeout(() => {
+            setShowFailMessage(false);
+        }, 2000);
+        }
+        
+        
+    };
+
+    const updateRepsSets = async (exerciseId) => {
+        
+        try {
+            const token = localStorage.getItem("token");
+            console.log(exerciseId)
+            console.log(newSets)
+            console.log(newReps)
+            if (token) {
+                api.defaults.headers.common["Authorization"] = `Token ${token}`;
+                
+                let response = await api.put(`exercises/${exerciseId}/`,{
+                    sets: newSets,
+                    reps: newReps
+                });
+                
+                // setNewSets("");
+                // setNewReps("");
+                // fetchWorkouts();
+            } else {
+                console.log("Token not found");
+            }
+        } catch (error) {
+            console.error("Error updating sets/reps:", error);
+        }
     };
 
     return (
-        <div className="bg-slate-400 border-2 p-5 m-5 ">
+        <div className="bg-[#c776f6b7] border-2 p-5 m-5 text-[#F5F5F5]">
             
             <p className="font-bold underline pb-3">{props.exercise_name} </p>
             <li>Targeted muscle: {props.primary_muscle}</li>
             <li>Equipment needed: {props.equipment} </li>
             <li>Difficulty rating: {props.difficulty} </li>
+            {props.sets && props.reps && (
+                <>
+                <li>Sets: {props.sets}</li>
+                <li>Reps: {props.reps}</li>
+                </>
+            )}
             <div className={`instructions ${expanded ? "block" : "truncate"} mt-2`}>
             <li>{props.instructions}</li>
             </div>
             <button onClick={toggleExpand} className="mt-2 text-blue-600 hover:underline">
                 {expanded ? "Show Less" : "Show More"}
             </button>
-            {!isOnWorkout && isOnExercisesPage && (
+            {isOnExercisesPage && (
                 <div className="flex">
                     <label className="block mt-2">Select Workout:</label>
-                    <select onChange={(e) => {setSelectedWorkout(e.target.value);}}  
-                    className="m-2 border border-gray-300 rounded">
+                    <select onChange={handleSelectedWorkoutChange}  
+                    className="m-2 border border-gray-300 rounded text-black">
                         <option value="">Select a workout</option>
                         {props.availableWorkouts.map((workout) => (
-                            <option key={workout.id} value={workout.id}>
+                            <option key={workout.id} value={workout.id} data-workout-name={workout.workout_name}>
                                 {workout.workout_name}
                             </option>
                         ))}
                     </select>
-                    <button onClick={addExerciseHandler}  className="mx-2 bg-blue-500 hover:bg-blue-600 text-white px-2 rounded">Add to workout</button>
+                    <button onClick={addExerciseHandler}  className="mx-2 bg-purple-600 hover:bg-purple-700 border-black border  px-2 rounded">Add to workout</button>
+                    {showSuccessMessage &&(
+                    <div className="text-green-500">Exercise added successfully!</div>
+                    )}
+                    {showFailMessage &&(
+                        <div>Exercise is already on workout</div>
+                    )}
                 </div>
             )}
-            {addedToWorkout && (
+            {/* {addedToWorkout && (
                 <p className="text-green-500 mt-2">{`${props.exercise_name} added to selected workout!`}</p>
-            )}
+            )} */}
             {!isOnExercisesPage && (
                 <div className="flex justify-center items-center">
+                    <form>
+                        <input className="border rounded mr-2 text-black" 
+                        type="text" 
+                        placeholder="Sets"
+                        value={newSets} 
+                        onChange={(e) => setNewSets(e.target.value)}/>
+                        <input className="border rounded mr-2 text-black" 
+                        type="text" 
+                        placeholder="Reps"
+                        value={newReps} 
+                        onChange={(e) => setNewReps(e.target.value)}/>
+                        <button className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-4 rounded" onClick={() =>{updateRepsSets(props.exercise_id)}}>Edit Sets/Reps</button>
+                    </form>
                     <button className="ml-auto bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded " onClick={() => {deleteExercise(props.exercise_id)}}>Delete</button>
                 </div>
             )}

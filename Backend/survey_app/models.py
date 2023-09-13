@@ -18,6 +18,14 @@ class Survey_response(models.Model):
         null=False, validators=[v.MinValueValidator(6), v.MaxValueValidator(99)]
     )
     gender = models.CharField(null=False, validators=[v.MaxLengthValidator(6)])
-    activity_level = models.CharField(null=False)
-    dietary_restrictions = models.CharField(null=True)
+    activity_level = models.DecimalField(
+        max_digits=3, decimal_places=2, null=False,
+        validators=[
+            v.MinValueValidator(0.7),
+            v.MaxValueValidator(1.8)
+        ]
+    )
+    dietary_restrictions = models.BooleanField(null=False)
+    equipment = models.CharField(null=False, default="full_gym")
+    # full_gym / db_only / bodyweight
     created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
