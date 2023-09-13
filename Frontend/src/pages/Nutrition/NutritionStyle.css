@@ -1,38 +1,47 @@
 .nutrition-page{
     display:flex;
     flex-direction: column;
-    height:100vh;
+    min-height:100vh;
     width:100vw;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    background-position: center;
+    background-size: cover;
+    background-image: url('https://static1.srcdn.com/wordpress/wp-content/uploads/2017/03/Pizza-Time-Teenage-Mutant-Ninja-Turtles.jpg');
+    
+}
+.nutrition-page-text{
+    color: whitesmoke;
+    text-shadow: 1px 1px 10px rgb(109, 109, 109);
+}
+.nutrition-page-text-meal{
+    color: whitesmoke;
+    text-shadow: 1px 1px 10px rgb(109, 109, 109);
+    text-align: center;
 }
 .nutrition-entry{
     display: flex;
     flex-direction: column;
     height: fit-content;
-    width: 100vw;
-    border: 2px solid black;
+    width: 80vw;
     justify-content: space-around;
     align-items: center;
+    border-radius: 10px;
+    background-color: rgb(94, 37, 148);
+    padding: 20px;
 }
 .food{
     display:flex;
-    width: 100vw;
+    width: 80vw;
+    
 }
 .ingredient{
     display: flex;
-    width: 100vw;
-}
-.userInfo{
-    height: 25vh;
-    display: flex;
-    flex-direction: column;
-    width:100vw;
-    border: 2px solid black;
-    margin-bottom: 10px;
+    width: 80vw;
+    
 }
 .results{
-    height: 25%;
+    height: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,7 +55,6 @@
 .img{
     height:10vh;
     width: 10vh;
-    border: solid black 2px;
     border-radius: 100%;
 }
 .mealList{
@@ -54,7 +62,9 @@
     flex-wrap: wrap;
     flex-direction: column;
    height:fit-content;
-    width: 100vw;
+    width: 80vw;
+    padding: 20px;
+    
 }
 .resultsContainer{
     display: flex;
@@ -63,4 +73,18 @@
     justify-content: space-around;
     height:25vh;
     width: 60vw;
+    background-color: rgb(94, 37, 148);
+    border-radius: 10px;
+    padding: 20px;
+    
 }
+
+.resultsContainer > h2{
+    text-align: center;
+}
+
+
+
+
+
+
