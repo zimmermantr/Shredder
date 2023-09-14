@@ -5,6 +5,7 @@ import Nutrition from "./pages/Nutrition/Nutrition";
 import LogIn from "./pages/UserAuth/LogIn";
 import SignUp from "./pages/UserAuth/SignUp";
 import Survey from "./pages/Survey/Survey";
+import UserInfo from "./pages/UserPage/UserInfo";
 import { ExercisesPage } from "./pages/Fitness/ExercisesPage";
 import { WorkoutListsPage } from "./pages/Fitness/WorkoutListPage";
 import WorkoutPrograms from "./pages/Workout-Programs/WorkoutPrograms"
@@ -34,13 +35,17 @@ export const router = createBrowserRouter([
             element: <LogIn />
         },
         {
-            path: 'user_survey',
+            path: 'user/survey/',
             element: <Survey />
         },
         {
             path: "exercises",
             element: <ExercisesPage />
         },
+            path: 'user/info/',
+            element: <UserInfo />
+        },
+
         {
             path: "workouts",
             element: <WorkoutListsPage />
