@@ -6,12 +6,22 @@ import CalcPrev from "./CalcPrev";
 // Frontend/src/pages/Home/homepageStyle.css
 import { useEffect, useContext } from "react";
 import { userContext } from "../../App";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 export const Homepage = () => {
     const {user} = useContext(userContext)
     useEffect(()=>{
         console.log(user)
       },[])
+
+    const navigate = useNavigate();
+
+    const handleFeatureClick = (path) => {
+        navigate()
+    }
+
     return (
         <>
                 <Nav />
@@ -38,36 +48,45 @@ export const Homepage = () => {
 
 
                 <div className="features">
-                    <Features
-                        imageSRC='/features/icons8-gym-64.png'
-                        title='Stuff 1'
-                        description='Explanation of stuff.'
-                        />
-                    <Features
-                        imageSRC='/features/icons9.png'
-                        title='Stuff 2'
-                        description='Explanation of stuff.'
-                        />
-                    <Features
-                        imageSRC='/features/icons10.png'
-                        title='Stuff 3'
-                        description='Explanation of stuff.'
-                        />
-                    <Features
-                        imageSRC='/features/icons11.png'
-                        title='Stuff 4'
-                        description='Explanation of stuff.'
-                        />
-                    <Features
-                        imageSRC='/features/icons12.png'
-                        title='Stuff 5'
-                        description='Explanation of stuff.'
-                        />
-                    <Features
-                        imageSRC='/features/icons13.png'
-                        title='Stuff 6'
-                        description='Explanation of stuff.'
-                        />
+                   
+                
+                        <Features
+                            imageSRC='/features/icons8-gym-64.png'
+                            title='Workout Programs'
+                            description='Browse through our selection of ready-to-go workout programs'
+                            />
+                                               
+                        
+                        <Features
+                            imageSRC='/features/icons9.png'
+                            title='My Workouts'
+                            description='Design and modify your own workouts to personalize them to your fitness levels'
+                            />
+                        
+                        <Features
+                            imageSRC='/features/icons10.png'
+                            title='Exercises'
+                            description='Explore our vast library of excerises and add them to your custom workouts'
+                            />
+                       
+                        <Features
+                            imageSRC='/features/icons11.png'
+                            title='Nutrition Dashboard'
+                            description='Monitor your daily nutritional progress with our interactive dashboard'
+                            />
+                        
+                        <Features
+                            imageSRC='/features/icons12.png'
+                            title='My Plan'
+                            description='Browse and review your saved workout programs and custome made workouts'
+                            />
+                        
+                        <Features
+                            imageSRC='/features/icons13.png'
+                            title='Health Survey'
+                            description='Monitor your fitness journey by regularly updating our custom fitness survey'
+                            />
+                        
                 </div>
                 
                 

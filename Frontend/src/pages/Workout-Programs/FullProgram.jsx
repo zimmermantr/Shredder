@@ -20,7 +20,6 @@ export default function FullWorkoutProgram () {
           const headers = { Authorization: `Token ${token}` };
           const response = await api.get(`programs/${id}`, { headers });
           setProgramData(response.data);
-          console.log(response.data);
 
           // Check if the program is saved by the user
           const savedProgramsResponse = await api.get("user/saved-programs", { headers });
@@ -36,10 +35,10 @@ export default function FullWorkoutProgram () {
         console.log("Error fetching data:", error);
       }
     }
+
     getWorkoutPrograms();
   }, [id]);
 
-  // ...
 
   const addWorkoutProgram = async function (program_id) {
     try {
@@ -90,12 +89,13 @@ export default function FullWorkoutProgram () {
           <p>Difficulty: {programData.program_difficulty}</p>
           <p>Duration: {programData.program_duration}</p>
           <p>Frequency: {programData.frequency_per_week} days per week</p>
-        <button className="inline-block rounded-md bg-purple-500 hover:bg-purple-900 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white w-40" 
-        onClick={addWorkoutProgram}
-        disabled={isProgramSaved}
-        >
-          Start Program
-        </button>
+          <button
+            className="inline-block rounded-md bg-purple-500 hover:bg-purple-900 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white w-40"
+            onClick={addWorkoutProgram}
+            disabled={isProgramSaved}
+          >
+            {isProgramSaved ? "Program Saved" : "Start Program"}
+          </button>
         </div>
         <div style={{
           border: "2px solid black",
