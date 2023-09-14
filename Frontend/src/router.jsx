@@ -39,14 +39,13 @@ export const router = createBrowserRouter([
             element: <Survey />
         },
         {
-
+            path: "exercises",
+            element: <ExercisesPage />
+        },
             path: 'user/info/',
             element: <UserInfo />
         },
-        {
-            path: "exercises/:searchParameters",
-            element: <ExercisesPage />
-        },
+
         {
             path: "workouts",
             element: <WorkoutListsPage />

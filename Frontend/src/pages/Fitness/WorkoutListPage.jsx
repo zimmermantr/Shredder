@@ -36,12 +36,23 @@ export const WorkoutListsPage = () => {
 
 
 
-
+    // bg-[#1B1919]
 
     return (
-        <div className="bg-[#1B1919] ">
+        <div className="h-screen  w-full bg-[#152f54]" style={{
+            backgroundImage: `url('/turtlegym.jpeg')`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed'
+        }}>
             <Nav />
-            <div className="bg-[#1B1919]">
+            <div  className="h-auto w-full bg-[#152f54]" style={{
+            backgroundImage: `url('/turtlegym.jpeg')`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed'
+        }}>
+            <div  className="flex-grow mt-2">
             <form className="m-3">
                 <input className="border rounded mr-2"
                     type="text"
@@ -56,12 +67,13 @@ export const WorkoutListsPage = () => {
                     value={newWorkoutDetails}
                     onChange={(e) => setNewWorkoutDetails(e.target.value)}
                 /> */}
-                <button className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-4 rounded" onClick={createWorkout}>Add workout</button>
+                <button className="bg-purple-600 hover:bg-purple-700 text-white py-1 px-4 rounded" onClick={createWorkout}>Add workout</button>
             </form>
             {workouts.map((workout) => (
                 
                 <WorkoutCard key={workout.id} workout={workout} />
             ))}
+            </div>
             </div>
         </div>
     );

@@ -37,10 +37,11 @@ return (
 <div>
   <Nav />
   <div className='bg-cover bg-fixed bg-[url("https://images.pexels.com/photos/949128/pexels-photo-949128.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")]'>
-    <section class="text-gray-600 body-font text-xl">
-      <div class="container px-5 py-24">
-        <div class="flex flex-col justify-center items-center mx-auto">
+    <section className="text-gray-600 body-font text-xl">
+      <div className="container px-5 py-24">
+        <div className="flex flex-col justify-center items-center mx-auto">
           {workoutProgramData.map((program) => (
+
             <div key={program.id} class="p-4 md:w-2/3 text-center">
               <div class="h-full bg bg-purple-200 border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden w-150">
                 <div class="p-6">
@@ -51,6 +52,7 @@ return (
                   <p class="leading-relaxed mb-3">Frequency: {program.frequency_per_week} days per week</p>
                   <div class="flex items-center flex-wrap justify-center">
                     <a class="text-indigo-500 inline-flex items-center">
+
                       <button onClick={() => fullProgramButton(program.id)}>Full Program</button>
                     </a>
                   </div>

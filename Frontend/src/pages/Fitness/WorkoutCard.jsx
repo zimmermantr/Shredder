@@ -7,22 +7,23 @@ export default function WorkoutCard({workout}) {
 
     return(
         <div>
-
-            <div key={workout.id} className="bg-black border-purple-200 border-2 p-5 m-5 max-w-1000 text-white">
+            <div key={workout.id} className="bg-[#266902] bg-opacity-50 border-purple-200 border-2 p-5 m-5 max-w-1000 text-white flex flex-col justify-center items-center ">
                 <p className="text-3xl font-bold">{workout.workout_name}</p>
-                <div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {workout.exercises.map((exercise) => (
-                        <div key={exercise.id} >
+                        <div key={exercise.id} className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             <ExerciseCard
                                 key={exercise.id}
                                 workouts={exercise.workouts}
                                 exercise_id={exercise.id}
                                 exercise_name={exercise.exercise_name}
-                                primary_muscle={exercise.primary_muscle}
-                                secondary_muscle={exercise.secondary_muscle}
+                                // primary_muscle={exercise.primary_muscle}
+                                // secondary_muscle={exercise.secondary_muscle}
+                                primary_muscle={exercise.target}
                                 equipment={exercise.equipment}
-                                difficulty={exercise.difficulty}
-                                instructions={exercise.instructions}
+                                // difficulty={exercise.difficulty}
+                                // instructions={exercise.instructions}
+                                gif_img={exercise.gif_img}
                                 created_by={exercise.created_by}
                                 reps={exercise.reps}
                                 sets={exercise.sets}

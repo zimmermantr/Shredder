@@ -16,6 +16,7 @@ class Exercise(models.Model):
     secondary_muscle = models.TextField(null=True)
     start_img = models.CharField(null=True)
     end_img = models.CharField(null=True)
+    gif_img = models.CharField(null=True)
     created_by = models.ForeignKey(App_user, on_delete=models.CASCADE)
 
 

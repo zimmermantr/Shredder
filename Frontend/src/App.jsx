@@ -11,6 +11,7 @@ export const userContext = createContext();
 
 function App() {
   const apiKey = import.meta.env.VITE_NINJA_API_KEY;
+  const rapidAPIKey = import.meta.env.VITE_RAPID_API_KEY;
   const [user, setUser] = useState(null);
   const [userID, setUserID] = useState(null);
   const [workouts, setWorkouts] = useState([]);
@@ -43,6 +44,10 @@ function App() {
   }
   const deleteExercise = async (exerciseId) => {
     try{
+      const confirmDelete = window.confirm("Are you sure you want to remove this program from your plan?");
+        if (!confirmDelete) {
+          return; // User cancelled the operation
+        }
       const token = localStorage.getItem("token");
       if (token) {
         api.defaults.headers.common["Authorization"] = `Token ${token}`;
@@ -68,6 +73,10 @@ function App() {
   };
   const deleteWorkout = async (workoutId) => {
     try{
+      const confirmDelete = window.confirm("Are you sure you want to remove this program from your plan?");
+        if (!confirmDelete) {
+          return; // User cancelled the operation
+        }
       const token = localStorage.getItem("token");
       if (token) {
         api.defaults.headers.common["Authorization"] = `Token ${token}`;
@@ -88,7 +97,7 @@ function App() {
 
 
   return (
-    <userContext.Provider value={{user, setUser, workouts, workout, addExercise, deleteExercise, setAddedToWorkout, apiKey, fetchWorkouts, deleteWorkout, addedToWorkout, validUser }}>
+    <userContext.Provider value={{user, setUser, workouts, workout, addExercise, deleteExercise, setAddedToWorkout, apiKey, fetchWorkouts, deleteWorkout, addedToWorkout, rapidAPIKey, validUser }}>
       <Outlet />
     </userContext.Provider>
   )

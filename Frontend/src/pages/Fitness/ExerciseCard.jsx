@@ -60,9 +60,7 @@ export default function ExerciseCard(props){
         
         try {
             const token = localStorage.getItem("token");
-            console.log(exerciseId)
-            console.log(newSets)
-            console.log(newReps)
+            
             if (token) {
                 api.defaults.headers.common["Authorization"] = `Token ${token}`;
                 
@@ -83,12 +81,15 @@ export default function ExerciseCard(props){
     };
 
     return (
-        <div className="bg-[#c776f6b7] border-2 p-5 m-5 text-[#F5F5F5]">
+        
+        <div className={`flex flex-col  ${
+            isOnExercisesPage ? 'bg-[#611ee1] bg-opacity-50' : 'bg-[#9da315] bg-opacity-50'
+        } border-2 p-2 text-[#F5F5F5] m-2`}  style={{ minWidth: "400px" }}>
             
             <p className="font-bold underline pb-3">{props.exercise_name} </p>
             <li>Targeted muscle: {props.primary_muscle}</li>
             <li>Equipment needed: {props.equipment} </li>
-            <li>Difficulty rating: {props.difficulty} </li>
+            {/* <li>Difficulty rating: {props.difficulty} </li> */}
             {props.sets && props.reps && (
                 <>
                 <li>Sets: {props.sets}</li>
@@ -96,14 +97,15 @@ export default function ExerciseCard(props){
                 </>
             )}
             <div className={`instructions ${expanded ? "block" : "truncate"} mt-2`}>
-            <li>{props.instructions}</li>
+            <img className="p-3" src={props.gif_img} alt={props.exercise_name} />
+            {/* <li>{props.instructions}</li> */}
             </div>
-            <button onClick={toggleExpand} className="mt-2 text-blue-600 hover:underline">
+            {/* <button onClick={toggleExpand} className="mt-2 text-blue-600 hover:underline">
                 {expanded ? "Show Less" : "Show More"}
-            </button>
+            </button> */}
             {isOnExercisesPage && (
                 <div className="flex">
-                    <label className="block mt-2">Select Workout:</label>
+                    <label className="block mt-2 text-center">Select Workout:</label>
                     <select onChange={handleSelectedWorkoutChange}  
                     className="m-2 border border-gray-300 rounded text-black">
                         <option value="">Select a workout</option>
@@ -127,18 +129,18 @@ export default function ExerciseCard(props){
             )} */}
             {!isOnExercisesPage && (
                 <div className="flex justify-center items-center">
-                    <form>
-                        <input className="border rounded mr-2 text-black" 
+                    <form className="">
+                        <input className="border rounded mr-2 text-black pl-2" 
                         type="text" 
                         placeholder="Sets"
                         value={newSets} 
                         onChange={(e) => setNewSets(e.target.value)}/>
-                        <input className="border rounded mr-2 text-black" 
+                        <input className="border rounded mr-2 text-black pl-2" 
                         type="text" 
                         placeholder="Reps"
                         value={newReps} 
                         onChange={(e) => setNewReps(e.target.value)}/>
-                        <button className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-4 rounded" onClick={() =>{updateRepsSets(props.exercise_id)}}>Edit Sets/Reps</button>
+                        <button className="bg-purple-600 hover:bg-purple-700  text-white py-1 px-4 rounded" onClick={() =>{updateRepsSets(props.exercise_id)}}>Edit Sets/Reps</button>
                     </form>
                     <button className="ml-auto bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded " onClick={() => {deleteExercise(props.exercise_id)}}>Delete</button>
                 </div>
@@ -146,3 +148,4 @@ export default function ExerciseCard(props){
         </div>
     )
 }
+// onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) this.onCancel(item) } }

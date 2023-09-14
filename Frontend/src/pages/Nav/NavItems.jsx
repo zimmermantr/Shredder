@@ -34,14 +34,14 @@ export const fitnessDropdown = [
     },
     {
         id: 2,
-        title: 'Excercises',
-        path: "/exercises/:searchParameters",                
+        title: 'User Workouts',
+        path: '/workouts',
         cName: 'submenu-item',
     },
     {
         id: 3,
-        title: 'User Workouts',
-        path: '/workouts',
+        title: 'Excercises',
+        path: "/exercises",                //// FIX
         cName: 'submenu-item',
     },
 ]
