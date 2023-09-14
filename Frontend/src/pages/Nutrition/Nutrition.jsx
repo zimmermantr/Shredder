@@ -13,12 +13,28 @@ export default function Nutrition(){
     const [ingredient,setIngredient] = useState("")
     const [amount,setAmount] = useState(0)
     const [click,setclick]= useState(true)
+    const[weight,setWeight] = useState(68)
+    const[height,setHeight] = useState(68)
+    const[age,setAge] = useState(68)
+    const[gender,setGender] = useState("Male")
+    const[activity_level,setActivity_level] = useState(0)
+    const[dietary_restrictions, setDietary_restrictions] = useState(false)
 
     useEffect(()=>{
         const token = localStorage.getItem("token")
         axios.defaults.headers.common["Authorization"] = `Token ${token}`
         axios.get("http://127.0.0.1:8000/api/v1/nutrition/").then((response)=>{
             setMealList(response.data)
+        }).catch((error)=>{
+            console.log(error)
+        })
+        axios.get("http://127.0.0.1:8000/api/v1/survey/view/").then((response)=>{
+            setWeight(Math.floor(response.data[0]['weight']/2.205))
+            setHeight(Math.floor(response.data[0]['height']*2.54))
+            setAge(Math.floor(response.data[0]['age']))
+            setGender(response.data[0]['gender'])
+            setActivity_level(response.data[0]['activity_level'])
+            setDietary_restrictions(response.data[0]['dietary_restrictions'])
         }).catch((error)=>{
             console.log(error)
         })
@@ -51,7 +67,7 @@ export default function Nutrition(){
                 <div className="results nutrition-page-text">
                     <div className="resultsContainer">
                     <h2 className="nutrition-page-text">Results</h2>
-                        <Progress mealList={mealList} />
+                        <Progress mealList={mealList} weight={weight} height={height} age={age} gender={gender} activity_level={activity_level} dietary_restrictions={dietary_restrictions}/>
                     </div>
                 </div>
                 <div className="nutrition-entry">
@@ -65,7 +81,7 @@ export default function Nutrition(){
                             <option value="Dinner">Dinner</option>
                             <option value="Snack">Snack</option>
                         </select>
-                        <button onClick={addFood}>Start a Meal</button>
+                        <button className="new-button" onClick={addFood}>Start a Meal</button>
                     </div>
                     <div className="mealList">
                             {mealList.map((mealItem)=>{
@@ -74,7 +90,7 @@ export default function Nutrition(){
                                 const itemDate = new Date(mealItem.created_at)
                                 const itemDateString = itemDate.toISOString().split('T')[0]
                                 if (itemDateString === todayDateString) {
-                                    return <ul key={mealItem.id}> <h2 className="nutrition-page-text-meal">{mealItem.meal}</h2> <button onClick={async()=>{
+                                    return <ul key={mealItem.id}> <h2 className="nutrition-page-text-meal">{mealItem.meal}</h2> <button className="new-button" onClick={async()=>{
                                         try{
                                             const token = localStorage.getItem("token")
                                             axios.defaults.headers.common["Authorization"] = `Token ${token}`
@@ -84,11 +100,11 @@ export default function Nutrition(){
                                             console.log(error)
                                         }
                                         setclick(!click)
-                                    }}>delete meal</button>
+                                    }}>Delete meal</button>
                                 <NutritionEntry key={mealItem.id} mealItem={mealItem} mealList={mealList} setMealList={setMealList} meal={meal} setMeal={setMeal} foodName={foodName} setFoodName={setFoodName} foodData={foodData} addFood={addFood} setIngredient={setIngredient} ingredient={ingredient} setclick={setclick} click={click}/>
                                 {mealItem.ingredients.map((ingredient)=>{
                                     return(<li key={ingredient.id}>
-                                    <h2 className="nutrition-page-text">{ingredient.name}, {ingredient.amount_consumed}</h2> <input type="text" placeholder="enter amount" onChange={(event)=>{setAmount(event.target.value)}} /> <button onClick={(async()=>{
+                                    <h2 className="nutrition-page-text">{ingredient.name}, {ingredient.amount_consumed}</h2> <input type="text" placeholder="enter amount" onChange={(event)=>{setAmount(event.target.value)}} /> <button className="new-button" onClick={(async()=>{
                                         try{
                                             const token = localStorage.getItem("token")
                                             axios.defaults.headers.common["Authorization"] = `Token ${token}`
@@ -99,7 +115,7 @@ export default function Nutrition(){
                                         }
                                         setclick(!click)
                                     })}>add amount</button>
-                                     <button onClick={async()=>{
+                                     <button className="new-button" onClick={async()=>{
                                          try{
                                              const token = localStorage.getItem("token")
                                              axios.defaults.headers.common["Authorization"] = `Token ${token}`
@@ -128,27 +144,3 @@ export default function Nutrition(){
     )
 }
 
-
-
-
-// const today = new Date(); // Current date and time
-// const todayDateString = today.toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
-
-// const filteredItems = items.map((item) => {
-//   // Parse the item's created_at date
-//   const itemDate = new Date(item.created_at);
-  
-//   // Get the item's date in YYYY-MM-DD format
-//   const itemDateString = itemDate.toISOString().split('T')[0];
-  
-//   // Check if the item's date matches today's date
-//   if (itemDateString === todayDateString) {
-//     // If it matches, return the item
-//     return item;
-//   }
-  
-//   // If it doesn't match, return null (or you can omit it)
-//   return null;
-// }).filter((item) => item !== null); // Filter out the null items
-
-// console.log(filteredItems); // Contains items with today's date

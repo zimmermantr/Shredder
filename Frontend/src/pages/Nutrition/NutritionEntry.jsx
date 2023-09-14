@@ -25,7 +25,7 @@ export default function NutritionEntry(props){
                                 }</option>
                             })}
                         </select>
-                        <button onClick={addIngredient}> get ingredient</button>
+                        <button className='new-button' onClick={addIngredient}> Get ingredient</button>
                     </div>
         </>
         )
