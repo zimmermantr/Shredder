@@ -8,7 +8,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    border: 1px solid black;
+    
     height: 30rem;
 
     display: flex;
@@ -30,7 +30,16 @@
     color: whitesmoke;
     text-align: center;
     text-shadow: 1px 1px 10px rgb(109, 109, 109);
-    /* padding: 4rem; */
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+.homeText h2 {
+    color: whitesmoke;
+    text-align: center;
+    text-shadow: 1px 1px 10px rgb(109, 109, 109);
+    padding: 1rem;
+    font-size: 2rem;
 }
 
 .homeText p {
@@ -67,20 +76,19 @@
 
 .featuresHeader .f1 {
     font-size: 3rem;
-    text-shadow: 1px 1px 10px rgb(162, 162, 162);
+    text-shadow: 10px 10px 25px #c776f6b7;
     padding: 1rem;
 }
 
 .featuresHeader .f2 {
     font-size: 1.5rem;
     width: 42%;
+    text-shadow: 10px 10px 25px #7e7285b7;
 }
 
 /* Features containers */
 
 .features {
-    border: black 1px solid;
-    border-radius: 2rem;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;

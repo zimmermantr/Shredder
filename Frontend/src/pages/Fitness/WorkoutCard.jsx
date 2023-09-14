@@ -7,6 +7,7 @@ export default function WorkoutCard({workout}) {
 
     return(
         <div>
+
             <div key={workout.id} className="bg-black border-purple-200 border-2 p-5 m-5 max-w-1000 text-white">
                 <p className="text-3xl font-bold">{workout.workout_name}</p>
                 <div>
