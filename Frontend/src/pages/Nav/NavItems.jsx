@@ -53,12 +53,12 @@ export const nutritionDropdown = [
         path: '/nutrition',                      
         cName: 'submenu-item',
     },
-    {
-        id: 2,
-        title: 'other things',
-        path: '/',                      //// FIX
-        cName: 'submenu-item',
-    },
+    // {
+    //     id: 2,
+    //     title: 'other things',
+    //     path: '/',                      //// FIX
+    //     cName: 'submenu-item',
+    // },
 ]
 
 export const userDropdown = [
