@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
             element: <Survey />
         },
         {
-            path: "exercises/:searchParameters",
+            path: "exercises",
             element: <ExercisesPage />
         },
         {
