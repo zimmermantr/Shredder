@@ -1,7 +1,8 @@
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 export default function Progress (props){
-    const {mealList} = props
+    const {mealList,weight,height,age,gender,activity_level,dietary_restrictions} = props
     let protein = 0
     let carbs = 0
     // "Carbohydrate, by difference"
@@ -32,20 +33,34 @@ export default function Progress (props){
                     }
                 })
             })
-
+            // fat conversion to calories then compare to 25% of fat
+            fat = (((fat*9)/(calories*0.25))*100)
+        }
+        console.log(weight)
+        console.log(protein)
+        console.log(activity_level)
+        // add activity level
+        if(gender ==="Male"){
+            // RMR FORMULA
+                calories/=((10*weight) + (6.25*height)- (5*age) + 5)}
+        else{
+            calories/=((10*weight) + (6.25*height) - (5*age) - 161)
         }
     })
     return( <>  
-               calories
-                <ProgressBar striped variant={((calories/2000)*100) > 100?"danger":"info"} now={calories?((calories/2000)*100):null} label={`${Math.floor((calories/2000)*100)}%`} />
-               protein
-                <ProgressBar striped variant={(protein/(68/0.8))>1?"success": "danger"} now={((protein/(68/0.8))*100)} label={protein?`${Math.floor((protein/(68/0.8))*100)}%`:null} />
-               carbohydrates
+               Calories
+                <ProgressBar striped variant={(calories*100) > 100?"danger":"info"} now={calories?(calories*100):null} label={`${Math.floor(calories*100)}%`} />
+               Protein
+                                                {/* PROTEIN FORMULA */}
+                <ProgressBar striped variant={(protein/(weight*activity_level))>1?"success": "danger"} now={((protein/(weight*activity_level))*100)} label={protein?`${Math.floor((protein/(weight*activity_level))*100)}%`:null} />
+               Carbohydrates
                 <ProgressBar striped variant={carbs > 300?"success":"danger"} now={(carbs/300)*100} label={`${Math.floor((carbs/300)*100)}%`} />
-               fat
-                <ProgressBar striped variant={(((fat*9)/(calories*0.25))*100) > 100?"danger":"info"} now={fat?((fat*9)/(calories*0.25))*100:null} label={`${Math.floor((fat*9)/(calories*0.25)*100)}%`} />
+               Fat
+                <ProgressBar striped variant={fat > 100?"danger":"info"} now={fat?fat:null} label={`${Math.floor(fat)}%`} />
     
             </>
     )
         
 }
+// Females: (10*weight) + (6.25*height) – (5*age) – 161
+// Males: (10*weight) + (6.25*height) – (5*age) + 5
