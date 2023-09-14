@@ -117,9 +117,29 @@ export const Homepage = () => {
 
                 <CalcPrev
                     title='Take control of your diet with our Calculators.'
-                    text='BHSOHDOHkfkdsahoiahiow hxhlkhlhiohoaihskdfhalskh'
+                    text='Unlock the power of personalized health and fitness with our exclusive calculators. Sign up now to access a world of data-driven insights tailored just for you and enjoy full access to all our calculators. Start your journey to a healthier you today!'
                     />
 
+            <div className="food">
+
+                <div className="foodText">
+                    <h2>
+                        Introducing our Nutrition Meal Tracker: Your Personalized Path to Wellness!
+                    </h2>
+                    <p>
+                    Our Nutrition Meal Tracker is your ultimate tool for maintaining a balanced diet and achieving your health goals. Whether you're looking to shed a few pounds, build muscle, or simply eat more mindfully, this intuitive tracker has got you covered.
+                    Eating right has never been easier or more convenient.
+                    </p>
+                </div>
+
+
+
+
+
+
+
+
+            </div>
             </div>
             {/* <div className="spacer"></div> */}
         </div>

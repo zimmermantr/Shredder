@@ -15,6 +15,7 @@
         /* flex-direction: column; */
         justify-content: center;
         background: rgb(28, 28, 28);
+        overflow: hidden;
     }
     body #root .FullMain .MainHome {
         width: 85vw;
@@ -22,6 +23,7 @@
         flex-direction: column;
         justify-content: center;
         /* align-items: center; */
+        
     }
 }
 
