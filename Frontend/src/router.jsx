@@ -42,6 +42,7 @@ export const router = createBrowserRouter([
             path: "exercises",
             element: <ExercisesPage />
         },
+        {
             path: 'user/info/',
             element: <UserInfo />
         },
