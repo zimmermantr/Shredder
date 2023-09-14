@@ -33,6 +33,10 @@ align-items: center;
 
 color: whitesmoke;
 
+width:50%;
+@media screen and (max-width:  1025px){
+    width: 100%;
+}
 `
 
 const CalcHpRPhone = styled.div`
@@ -74,13 +78,29 @@ margin-top: 1rem;
 color: whitesmoke;
 text-align: center;
 text-wrap: balance;
+font-size: 1.5rem;
 `
 const CalcP = styled.h6`
-padding:1rem;
+font-size: 1.25rem;
 
+padding:1rem;
+word-wrap:break-word;
+width:95%;
+text-indent: 2rem;
+margin-bottom: 1rem;
 `
 const CalcInput = styled.input`
     color: purple;
+    background:whitesmoke;
+    margin-top: 1rem;
+`
+const CalcPic = styled.img`
+
+`
+
+const CAh2 = styled.h2`
+font-size:1.8rem;
+padding:1rem;
 `
 
 const CalcPrev = ({title, text,    }) => {
@@ -112,13 +132,13 @@ const CalcPrev = ({title, text,    }) => {
             <CalcHp>
 
                 <CalcHpLeft>
-                    <h2>{title}</h2>
+                    <CAh2>{title}</CAh2>
                     <CalcP>{text}</CalcP>
 
 
 
 
-                    <h3>What would you like to calculate?</h3>
+                    <CAh2>What would you like to calculate?</CAh2>
 
                     <DropdownButton id="dropdown-basic-button" title={dropBtnTitle}>
                         <Dropdown.Item onClick={() => proteinEquation()}>Protein Requirements</Dropdown.Item>
@@ -140,13 +160,20 @@ const CalcPrev = ({title, text,    }) => {
 
                 <CalcHpRPhone>
                     <PhoneDisplay>
+
+                        {calc === 1 ? <CalcPic src='/features/shake.png'/>
+                        : calc===2 ? <CalcPic src='/features/infoPage/bmi.png'/>
+                        :calc === 3 ? <CalcPic src='/features/infoPage/meal.png'/>
+                        : <CalcPic src='/features/calc.png'/>}
+
+
                         <InnerPhoneH2>
                             {dropBtnTitle}
                         </InnerPhoneH2>
                         <InnerPhoneH2>
-                            {calc === 1 ? (weight && `${Math.floor(ProteinReq(0.8,LbsToKg(weight)))}g of protein`)
-                            : calc === 2 ? (height && weight && `${(BMI(InchToCm(height),LbsToKg(weight)).toFixed(2))} BMI`)
-                            : calc === 3 ? (weight && `${Math.floor(KcalPerKg(25,LbsToKg(weight)))} calories/day`)
+                            {calc === 1 ? (weight && `${Math.floor(ProteinReq(0.8,weight))}g of protein`)
+                            : calc === 2 ? (height && weight && `${(BMI(height, weight))} BMI`)
+                            : calc === 3 ? (weight && `${Math.floor(KcalPerKg(25,weight))} calories/day`)
                             : ''}
                         </InnerPhoneH2>
             

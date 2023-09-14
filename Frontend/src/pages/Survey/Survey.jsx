@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from '../Nav/Button';
 import { api } from '../../Api';
 import { userContext } from '../../App';
+import Nav from '../Nav/Nav';
 
 
 const Sbackground = styled.div`
@@ -17,7 +18,7 @@ justify-content: space-between;
 `;
 
 const Ssideborder = styled.div`
-background: red;
+background: #1B1919;
 // height: 100vh;
 width: 15%;
 
@@ -28,9 +29,9 @@ justify-content: center;
 writing-mode: vertical-rl;
 text-orientation: mixed;
 
-font-size: 5rem;
-color: grey;
-text-shadow: #000 1px 20px 15px;
+font-size: 4.5rem;
+color: #c776f650;
+text-shadow: #c776f640 1px 20px 15px;
 `;
 
 const Smid = styled.div`
@@ -54,8 +55,10 @@ color: white;
 `;
 
 const Squestions = styled.div`
-background: #0003;
+background: #1B191990;
 width: 90%;
+padding: 2rem;
+border-radius:2rem;
 
 display: flex;
 flex-direction: column;
@@ -63,7 +66,7 @@ flex-direction: column;
 
 const SQ = styled.div`
 width:24%;
-background: black;
+background: #1B1919;
 border-radius: 2rem;
 
 padding: 4rem 2rem;
@@ -75,7 +78,7 @@ margin: 2rem 0;
 `
 const SQ2 = styled.div`
 width:33%;
-background: black;
+background: #1B1919;
 border-radius: 2rem;
 
 padding: 4rem 2rem;
@@ -150,6 +153,7 @@ export default function Survey() {
 
     return (
         <>
+        <Nav/>
             <Sbackground>
                 <Ssideborder>
                     Shred The Competiton
