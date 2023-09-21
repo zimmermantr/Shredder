@@ -17,8 +17,8 @@ export default function Nutrition(){
     const[height,setHeight] = useState(68)
     const[age,setAge] = useState(68)
     const[gender,setGender] = useState("Male")
-    const[activity_level,setActivity_level] = useState(0)
-    const[dietary_restrictions, setDietary_restrictions] = useState(false)
+    const[activityLevel,setActivityLevel] = useState(0)
+    const[dietaryRestrictions, setDietaryRestrictions] = useState(false)
 
     useEffect(()=>{
         const token = localStorage.getItem("token")
@@ -33,8 +33,8 @@ export default function Nutrition(){
             setHeight(Math.floor(response.data[0]['height']*2.54))
             setAge(Math.floor(response.data[0]['age']))
             setGender(response.data[0]['gender'])
-            setActivity_level(response.data[0]['activity_level'])
-            setDietary_restrictions(response.data[0]['dietary_restrictions'])
+            setActivityLevel(response.data[0]['activity_level'])
+            setDietaryRestrictions(response.data[0]['dietary_restrictions'])
         }).catch((error)=>{
             console.log(error)
         })
@@ -67,7 +67,7 @@ export default function Nutrition(){
                 <div className="results nutrition-page-text">
                     <div className="resultsContainer">
                     <h2 className="nutrition-page-text">Results</h2>
-                        <Progress mealList={mealList} weight={weight} height={height} age={age} gender={gender} activity_level={activity_level} dietary_restrictions={dietary_restrictions}/>
+                        <Progress mealList={mealList} weight={weight} height={height} age={age} gender={gender} activityLevel={activityLevel} dietaryRestrictions={dietaryRestrictions}/>
                     </div>
                 </div>
                 <div className="nutrition-entry">
