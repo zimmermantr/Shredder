@@ -8,9 +8,13 @@ import ExerciseCard from "./ExerciseCard";
 import Nav from "../Nav/Nav";
 
 export const WorkoutListsPage = () => {
-    const {workouts, setWorkouts, fetchWorkouts, user} = useContext(userContext);
+    const {workouts, setWorkouts, fetchWorkouts, user, validUser} = useContext(userContext);
     const [newWorkoutName, setNewWorkoutName] = useState("");
     const [newWorkoutDetails, setNewWorkoutDetails] = useState("");
+    
+    useEffect(()=> {
+        validUser();
+    }, []);
 
     const createWorkout = async () => {
         try {
@@ -69,10 +73,10 @@ export const WorkoutListsPage = () => {
                 /> */}
                 <button className="bg-purple-600 hover:bg-purple-700 text-white py-1 px-4 rounded" onClick={createWorkout}>Add workout</button>
             </form>
-            {workouts.map((workout) => (
+            {workouts.map((workout) =>
                 
                 <WorkoutCard key={workout.id} workout={workout} />
-            ))}
+            )}
             </div>
             </div>
         </div>
