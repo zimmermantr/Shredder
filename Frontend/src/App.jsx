@@ -64,7 +64,6 @@ function App() {
         if (token) {
             api.defaults.headers.common["Authorization"] = `Token ${token}`;
             let response = await api.get("workouts/");
-            console.log(response.data)
             setWorkouts(response.data)
         }
     } catch (error) {
@@ -90,7 +89,7 @@ function App() {
 
   useEffect(()=> {
     validUser()
-    // setWorkouts([])
+    setWorkouts([])
     fetchWorkouts()
   }, []);
 

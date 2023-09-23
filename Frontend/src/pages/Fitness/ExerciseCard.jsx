@@ -90,10 +90,15 @@ export default function ExerciseCard(props){
             <li>Targeted muscle: {props.primary_muscle}</li>
             <li>Equipment needed: {props.equipment} </li>
             {/* <li>Difficulty rating: {props.difficulty} </li> */}
-            {props.sets && props.reps && (
+            {props.sets && props.reps ? (
                 <>
                 <li>Sets: {props.sets}</li>
                 <li>Reps: {props.reps}</li>
+                </>
+            ) : (
+                <>
+                <li className="list-none h-8"> </li>
+                <li className="list-none m-0 p-0 h-4"> </li>
                 </>
             )}
             <div className={`instructions ${expanded ? "block" : "truncate"} mt-2`}>
